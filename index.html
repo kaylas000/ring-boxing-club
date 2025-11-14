@@ -4,172 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ring Boxing Club - Профессиональные тренировки по боксу</title>
-    <meta name="description" content="Боксерский клуб с профессиональными тренерами. Групповые и индивидуальные тренировки для всех уровней.">
+    <meta name="description" content="Боксёрский клуб Ring Boxing Club. Профессиональные тренировки, опытные тренеры, современное оборудование.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header" aria-label="Основная навигация">
-        <nav class="nav">
-            <div class="logo" aria-label="Логотип клуба">🥊 RING BOXING</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="training.html">Тренировки</a></li>
-                <li><a href="shop.html">Магазин</a></li>
-                <li><a href="blog.html">Блог</a></li>
-                <li><a href="schedule.html">Расписание</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="cart-btn" aria-label="Корзина">
-                    🛒 <span class="cart-count">0</span>
-                </button>
-                <button class="profile-btn" aria-label="Профиль">👤</button>
-            </div>
-        </nav>
+    <!-- ЗАГОЛОВОК -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">🥊 RING <span>BOXING</span></a>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="training.html">Тренировки</a>
+                <a href="blog.html">Блог</a>
+                <a href="shop.html">Магазин</a>
+                <a href="schedule.html">Расписание</a>
+                <a href="contacts.html">Контакты</a>
+                <button class="cart-button">🛒 Корзина</button>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="container">
-                <h1>Добро пожаловать в Ring Boxing Club</h1>
-                <p>Премиум-класс тренировки по боксу с профессиональными тренерами</p>
-                <a href="#about" class="btn btn-primary">Узнать больше</a>
-                <a href="training.html" class="btn btn-secondary">Записаться на тренировку</a>
-            </div>
-        </section>
+    <!-- ГЕРОЙ СЕКЦИЯ -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в <span>RING BOXING CLUB</span></h1>
+            <p>Профессиональные тренировки по боксу для всех уровней подготовки</p>
+            <button class="hero-button">Начать тренировку</button>
+            <button class="hero-button secondary">Узнать больше</button>
+        </div>
+    </section>
 
-        <!-- ABOUT SECTION -->
-        <section class="about" id="about">
-            <div class="container">
-                <h2>О нашем клубе</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Ring Boxing Club - это современный боксерский клуб, где каждый может развивать свои навыки под руководством опытных тренеров.</p>
-                        <p>Мы предлагаем групповые и индивидуальные тренировки для начинающих и профессионалов.</p>
-                    </div>
-                </div>
+    <!-- ИНФОРМАЦИОННАЯ СЕКЦИЯ -->
+    <section class="container">
+        <h2>О нашем <span>клубе</span></h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <h3>💪 Профессиональные тренеры</h3>
+                <p>Наша команда состоит из квалифицированных тренеров с многолетним опытом. Каждый тренер специализируется на разных стилях и техниках бокса.</p>
             </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section class="features">
-            <div class="container">
-                <h2>Наши преимущества</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💪</div>
-                        <h3>Профессиональные тренеры</h3>
-                        <p>Опытные тренеры с международными сертификатами</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏋️</div>
-                        <h3>Современное оборудование</h3>
-                        <p>Новейшее боксерское оборудование и спортивные снаряды</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👥</div>
-                        <h3>Дружная община</h3>
-                        <p>Поддерживающее сообщество единомышленников</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📅</div>
-                        <h3>Удобный график</h3>
-                        <p>Тренировки в удобное для вас время</p>
-                    </div>
-                </div>
+            <div class="article-card">
+                <h3>🏆 Современное оборудование</h3>
+                <p>Мы используем только самое современное оборудование для максимальной эффективности тренировок. Боксёрские груши, мешки, снарядное оружие и тренажёры.</p>
             </div>
-        </section>
-
-        <!-- PROGRAMS SECTION -->
-        <section class="programs">
-            <div class="container">
-                <h2>Программы тренировок</h2>
-                <div class="programs-grid">
-                    <div class="program-card">
-                        <h3>Начинающие</h3>
-                        <p class="price">2 500 ₽/месяц</p>
-                        <p>Идеально для новичков. Основные техники бокса, кардио и физическая подготовка.</p>
-                        <ul>
-                            <li>✓ 8 тренировок в месяц</li>
-                            <li>✓ Групповые занятия</li>
-                            <li>✓ Доступ к залу</li>
-                        </ul>
-                        <button class="btn btn-primary">Выбрать</button>
-                    </div>
-                    <div class="program-card featured">
-                        <div class="badge">Популярно</div>
-                        <h3>Стандарт</h3>
-                        <p class="price">4 500 ₽/месяц</p>
-                        <p>Развитие техники и выносливости. Смешанные группы от начинающих до опытных.</p>
-                        <ul>
-                            <li>✓ 16 тренировок в месяц</li>
-                            <li>✓ Групповые и индивидуальные</li>
-                            <li>✓ Консультации тренера</li>
-                        </ul>
-                        <button class="btn btn-primary">Выбрать</button>
-                    </div>
-                    <div class="program-card">
-                        <h3>Профессиональный</h3>
-                        <p class="price">7 500 ₽/месяц</p>
-                        <p>Подготовка к соревнованиям. Индивидуальные программы тренировок.</p>
-                        <ul>
-                            <li>✓ Неограниченные тренировки</li>
-                            <li>✓ Личный тренер</li>
-                            <li>✓ Участие в соревнованиях</li>
-                        </ul>
-                        <button class="btn btn-primary">Выбрать</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="cta">
-            <div class="container">
-                <h2>Начните тренироваться прямо сейчас!</h2>
-                <p>Первая тренировка - БЕСПЛАТНО!</p>
-                <a href="contacts.html" class="btn btn-primary btn-lg">Записаться</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Ring Boxing Club</h4>
-                    <p>Профессиональные тренировки по боксу для всех уровней</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Навигация</h4>
-                    <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="training.html">Тренировки</a></li>
-                        <li><a href="shop.html">Магазин</a></li>
-                        <li><a href="blog.html">Блог</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Информация</h4>
-                    <ul>
-                        <li><a href="about.html">О клубе</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
-                        <li><a href="privacy.html">Политика приватности</a></li>
-                        <li><a href="terms.html">Условия использования</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <p>📍 Москва, ул. Спортивная, 15</p>
-                    <p>📞 +7 (999) 123-45-67</p>
-                    <p>✉️ info@ringboxing.ru</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Ring Boxing Club. Все права защищены.</p>
+            <div class="article-card">
+                <h3>📅 Гибкое расписание</h3>
+                <p>Занятия проводятся с 6:00 до 22:00. Вы можете выбрать удобное для вас время. Индивидуальные и групповые тренировки доступны каждый день.</p>
             </div>
         </div>
+    </section>
+
+    <!-- ПОПУЛЯРНЫЕ ТОВАРЫ -->
+    <section class="container">
+        <h2>Популярные <span>товары</span></h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">🥊</div>
+                <h3>Боксёрские перчатки</h3>
+                <p>Профессиональные перчатки для тренировок и боёв. Высокое качество, удобная посадка.</p>
+                <div class="product-price">3 500 ₽</div>
+                <button class="product-button">В корзину</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🛡️</div>
+                <h3>Защитный шлем</h3>
+                <p>Надёжная защита головы во время тренировок. Сертифицирован международными стандартами.</p>
+                <div class="product-price">2 800 ₽</div>
+                <button class="product-button">В корзину</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🎗️</div>
+                <h3>Бинты для рук</h3>
+                <p>Защитные бинты для защиты суставов. Удобные в использовании, долговечные материалы.</p>
+                <div class="product-price">450 ₽</div>
+                <button class="product-button">В корзину</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👄</div>
+                <h3>Капа для зубов</h3>
+                <p>Защита зубов и дёсен. Анатомическая форма, удобное ношение длительное время.</p>
+                <div class="product-price">650 ₽</div>
+                <button class="product-button">В корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОСЛЕДНИЕ СТАТЬИ -->
+    <section class="container">
+        <h2>Последние <span>статьи</span></h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <h3>Техника прямого удара</h3>
+                <div class="article-date">15 ноября 2025</div>
+                <p>Узнайте, как правильно выполнять прямой удар. Основные ошибки, которые допускают начинающие боксёры, и как их избежать. Пошаговое руководство с практическими советами.</p>
+                <a href="posts/jab-technique.html" class="read-more">Читать далее →</a>
+            </div>
+            <div class="article-card">
+                <h3>Питание боксёра</h3>
+                <div class="article-date">12 ноября 2025</div>
+                <p>Правильное питание - основа успеха в боксе. В этой статье рассказываем о необходимых макронутриентах, режиме питания и рецептах для боксёров.</p>
+                <a href="posts/boxer-nutrition.html" class="read-more">Читать далее →</a>
+            </div>
+            <div class="article-card">
+                <h3>Работа ног в боксе</h3>
+                <div class="article-date">10 ноября 2025</div>
+                <p>Работа ног - это основа боксёрской техники. Изучите различные позиции, движения и упражнения для развития координации и баланса.</p>
+                <a href="posts/footwork-basics.html" class="read-more">Читать далее →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section class="container">
+        <h2>Отзывы <span>участников</span></h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <h3>Иван Петров</h3>
+                <div class="article-date">Профессиональный боксёр</div>
+                <p>"Отличный клуб! Тренеры знают своё дело. За полгода я улучшил свою технику на 200%. Рекомендую всем, кто хочет серьёзно заняться боксом!"</p>
+            </div>
+            <div class="article-card">
+                <h3>Мария Сидорова</h3>
+                <div class="article-date">Ученица 2 месяца</div>
+                <p>"Начала с нуля, а теперь уже участвую в любительских соревнованиях. Атмосфера в клубе супер, люди поддерживают друг друга!"</p>
+            </div>
+            <div class="article-card">
+                <h3>Алексей Козлов</h3>
+                <div class="article-date">Ученик 1 месяц</div>
+                <p>"Никогда не думал, что буду заниматься боксом. Но тренеры мотивируют, техника понятна, результаты видны уже через неделю!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+        <p>Адрес: г. Москва, ул. Боксёрская, д. 1</p>
+        <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a> | Email: <a href="mailto:info@ringboxing.ru">info@ringboxing.ru</a></p>
+        <p>
+            <a href="privacy.html">Политика конфиденциальности</a> | 
+            <a href="terms.html">Условия использования</a> | 
+            <a href="faq.html">FAQ</a>
+        </p>
     </footer>
 
     <script src="js/main.js"></script>
