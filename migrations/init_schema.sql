@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(128),
+  price INT,
+  category VARCHAR(32)
+);
+CREATE TABLE IF NOT EXISTS orders (
+  id SERIAL PRIMARY KEY,
+  product_id INT,
+  qty INT,
+  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(128),
+  password VARCHAR(128),
+  name VARCHAR(64)
+);
