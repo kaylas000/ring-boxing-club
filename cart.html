@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина покупок - Ring Boxing Club</title>
+    <meta name="description" content="Ваша корзина: боксерская экипировка, оформление заказа, скидки, доставка, безопасная оплата.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header><!-- Навигация как на главной --></header>
+    <main>
+      <section class="cart-section">
+        <div class="container">
+          <h2>Корзина</h2>
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Удалить</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Динамически добавляются товары -->
+            </tbody>
+          </table>
+          <div class="cart-summary">
+            <span>Итого: <span class="cart-total">0 ₽</span></span>
+            <button class="checkout-btn">Оформить заказ</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

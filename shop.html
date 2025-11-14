@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин боксерской экипировки - Ring Boxing Club</title>
+    <meta name="description" content="Профессиональная боксерская экипировка: перчатки, шлемы, бинты, капы. Гарантия качества и лучшие цены.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header><!-- Навигация как на главной --></header>
+    <main>
+        <section class="shop-hero">
+            <h1>Магазин экипировки</h1>
+            <p>Профессиональное оборудование для бокса</p>
+        </section>
+        <div class="shop-container">
+            <aside class="filters">
+                <div class="filter-group">
+                    <h4>Категории</h4>
+                    <label><input type="checkbox" name="category" value="gloves"> Перчатки</label>
+                    <label><input type="checkbox" name="category" value="helmets"> Шлемы</label>
+                    <label><input type="checkbox" name="category" value="wraps"> Бинты</label>
+                </div>
+                <div class="filter-group">
+                    <h4>Цена</h4>
+                    <input type="range" min="0" max="10000" value="5000" class="price-range">
+                </div>
+            </aside>
+            <section class="products">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="assets/images/gloves.jpg" alt="Боксерские перчатки Everlast">
+                        <h3>Боксерские перчатки Everlast</h3>
+                        <p class="price">4 500 ₽</p>
+                        <button class="add-to-cart" data-id="gloves1" data-name="Everlast Pro" data-price="4500" data-image="assets/images/gloves.jpg">В корзину</button>
+                    </div>
+                    <!-- Другие товары -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
