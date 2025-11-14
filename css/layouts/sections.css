@@ -1,0 +1,11 @@
+/* Общие секции layout с отступами и фонами */
+.section {
+  padding: 2rem 0;
+}
+.section--accent {
+  background: var(--accent);
+}
+.section--dark {
+  background: #111;
+  color: #fff;
+}
