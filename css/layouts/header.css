@@ -1,0 +1,18 @@
+/* Header и Footer стили */
+.header {
+  width: 100%;
+  background: #000;
+  border-bottom: 2px solid var(--primary);
+}
+.footer {
+  width: 100%;
+  background: #000;
+  border-top: 2px solid var(--primary);
+  color: #ccc;
+  padding: 2rem 0;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}

@@ -1,0 +1,25 @@
+/* Стили каруселей и слайдеров */
+.carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 1rem;
+}
+.carousel-item {
+  flex: 0 0 320px;
+  border-radius: 8px;
+  background: var(--accent, #232323);
+}
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.carousel-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #444;
+  border: 2px solid var(--primary);
+}
+.carousel-dot.active {
+  background: var(--primary);
+}

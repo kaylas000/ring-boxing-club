@@ -1,0 +1,8 @@
+/* Footer layout, contacts, карта сайта */
+.footer {
+  background: #111;
+  color: #ccc;
+}
+.footer-section {
+  margin-bottom: 1rem;
+}
