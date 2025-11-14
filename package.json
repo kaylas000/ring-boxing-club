@@ -1,0 +1,16 @@
+{
+  "name": "ring-boxing-club",
+  "version": "1.0.0",
+  "description": "Боксерский клуб. Все страницы, backend api, pwa, devops, ci/cd, тесты по ТЗ.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["boxing","club","pwa","shop","training"],
+  "author": "kaylas000",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
