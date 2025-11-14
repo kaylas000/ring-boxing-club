@@ -1,0 +1,30 @@
+/* Стили магазина товаров и фильтров */
+.shop-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+.filters {
+  background: #222;
+  border-radius: 7px;
+  padding: 1.5rem;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: var(--spacing-md);
+}
+.product-card {
+  background: var(--accent, #181818);
+  padding: var(--spacing-sm);
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.product-card:hover { transform: translateY(-5px); }
+.price { font-weight: bold; color: var(--primary); }

@@ -1,0 +1,41 @@
+/* Стили главной страницы (Hero, benefits, расписание) */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-content {
+  color: #fff;
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+.benefit-card {
+  background-color: var(--accent);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid var(--primary);
+}
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-sm);
+}
+.schedule-table {
+  display: flex;
+  gap: 2rem;
+  margin-top: var(--spacing-md);
+}
+.schedule-day {
+  background: #111;
+  padding: 1rem;
+  border-radius: 6px;
+}

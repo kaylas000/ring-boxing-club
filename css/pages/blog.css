@@ -1,0 +1,15 @@
+/* Стили для блога, сетки постов и sidebar */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 2rem;
+}
+.post-card {
+  background: #181818;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.post-card img {
+  border-radius: 7px 7px 0 0;
+}
+.post-date { color: #ccc; font-size: .95em; }

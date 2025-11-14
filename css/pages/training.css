@@ -1,0 +1,20 @@
+/* Стили страницы тренировок: программы, карточки, сетки */
+.programs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+.program-card {
+  background: #151515;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  color: #fff;
+}
+.signup-btn {
+  margin-top: 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: .85em 2em;
+}
