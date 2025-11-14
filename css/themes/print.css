@@ -1,0 +1,11 @@
+/* Принт-стили: скрытие меню, навигации, фона */
+@media print {
+  .header, .footer, nav, .cart-btn, .filters, .sidebar, .carousel {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #222 !important;
+  }
+  a:link:after, a:visited:after { content: " (" attr(href) ")"; color: #555; }
+}

@@ -1,0 +1,19 @@
+/* Темная тема с инвертированными цветами */
+body.theme-dark {
+  background: #111;
+  color: #fafafa;
+}
+.theme-dark .header, .theme-dark .footer {
+  background: #000;
+  color: #eee;
+}
+.theme-dark .card, .theme-dark .benefit-card, .theme-dark .program-card {
+  background: #181818;
+  color: #fff;
+}
+.theme-dark .button-primary {
+  background: #DC2626;
+}
+.theme-dark .button-primary:hover {
+  background: #FF0000;
+}
