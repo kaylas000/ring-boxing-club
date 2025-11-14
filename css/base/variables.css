@@ -1,0 +1,14 @@
+:root {
+  --primary: #FF0000;
+  --primary-dark: #CC0000;
+  --secondary: #000000;
+  --accent: #1a1a1a;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CCCCCC;
+  --success: #39c753;
+  --danger: #ff5252;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+}

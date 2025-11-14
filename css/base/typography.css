@@ -1,0 +1,12 @@
+/* Типографика: Bebas Neue и Roboto, иерархия заголовков/текста */
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.4rem; }
+p, li {
+  font-family: 'Roboto', Arial, sans-serif;
+}
