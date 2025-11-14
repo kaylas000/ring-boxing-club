@@ -2,33 +2,31 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - Ring Boxing Club</title>
-    <meta name="description" content="Контакты клуба: интерактивная карта, почта, телефоны, форма обратной связи, график работы.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><!-- Навигация как на главной --></header>
+    <header class="header" aria-label="Основная навигация">
+        <nav class="nav">
+            <div class="logo">🥊 RING BOXING</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="training.html">Тренировки</a></li>
+                <li><a href="shop.html">Магазин</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="schedule.html">Расписание</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+            <div class="nav-actions"><button class="cart-btn">🛒 <span class="cart-count">0</span></button><button class="profile-btn">👤</button></div>
+        </nav>
+    </header>
     <main>
-        <section class="contacts">
-            <div class="container">
-                <h2>Связаться с нами</h2>
-                <form class="contact-form">
-                    <label for="name">Имя</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="msg">Сообщение</label>
-                    <textarea id="msg" name="msg" required></textarea>
-                    <button type="submit">Отправить</button>
-                </form>
-                <div class="contact-info">
-                    <p><strong>Адрес:</strong> г. Москва, ул. Спортивная, 15</p>
-                    <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
-                    <p><strong>Email:</strong> boxclub@example.com</p>
-                </div>
-            </div>
-        </section>
+        <section class="hero"><div class="container"><h1>Контакты</h1><p>Свяжитесь с нами</p></div></section>
+        <section class="section"><div class="container"><div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:800px;margin:0 auto"><div><h2>Наша информация</h2><p>📍 Москва, ул. Спортивная, 15</p><p>📞 +7 (999) 123-45-67</p><p>✉️ info@ringboxing.ru</p><p>🕒 ПН-ПТ: 9:00-21:00
+СБ-ВС: 10:00-20:00</p></div><div><h2>Отправить письмо</h2><form class="contact-form"><input type="text" name="name" placeholder="Ваше имя" required style="width:100%;padding:0.5rem;margin-bottom:1rem;background:#2d2d2d;border:1px solid #d4af37;color:#fff;border-radius:4px"><input type="email" name="email" placeholder="Почта" required style="width:100%;padding:0.5rem;margin-bottom:1rem;background:#2d2d2d;border:1px solid #d4af37;color:#fff;border-radius:4px"><textarea name="message" placeholder="Ваше сообщение" required style="width:100%;padding:0.5rem;margin-bottom:1rem;background:#2d2d2d;border:1px solid #d4af37;color:#fff;border-radius:4px;min-height:100px"></textarea><button type="submit" class="btn btn-primary">Отправить</button></form></div></div></div></section>
     </main>
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-section"><h4>Ring Boxing Club</h4></div></div><div class="footer-bottom"><p>&copy; 2024 Ring Boxing Club</p></div></div></footer>
     <script src="js/main.js"></script>
 </body>
 </html>
