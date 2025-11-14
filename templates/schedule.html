@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание занятий | Ring Boxing Club</title>
+    <meta name="description" content="Детальное расписание боксерских тренировок, фильтрация по дням и группам, онлайн-запись и календарь мероприятий.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header><!-- навигация --></header>
+    <main>
+      <section class="schedule-detail">
+        <div class="container">
+          <h2>Расписание занятий</h2>
+          <form class="schedule-filter">
+            <select name="day">
+              <option>Понедельник</option>
+              <option>Вторник</option>
+              <option>Среда</option>
+              <option>Четверг</option>
+              <option>Пятница</option>
+              <option>Суббота</option>
+              <option>Воскресенье</option>
+            </select>
+            <select name="type">
+              <option>Все типы</option>
+              <option>Для начинающих</option>
+              <option>Продвинутые</option>
+              <option>Детские</option>
+              <option>Профессионалы</option>
+            </select>
+            <select name="coach">
+              <option>Все тренеры</option>
+              <option>Пётр Сергеевич</option>
+              <option>Иван Иванов</option>
+            </select>
+            <button type="submit">Фильтровать</button>
+          </form>
+          <table class="schedule-table-detail">
+            <thead>
+              <tr><th>День</th><th>Время</th><th>Группа</th><th>Тренер</th><th>Записаться</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Понедельник</td><td>09:00-10:30</td><td>Для начинающих</td><td>Иван Иванов</td><td><button class="signup-btn">Записаться</button></td></tr>
+              <tr><td>Понедельник</td><td>18:00-19:30</td><td>Продвинутые</td><td>Пётр Сергеевич</td><td><button class="signup-btn">Записаться</button></td></tr>
+              <!-- Другие строки -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

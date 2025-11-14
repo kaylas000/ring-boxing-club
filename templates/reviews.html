@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отзывы и рейтинги | Ring Boxing Club</title>
+    <meta name="description" content="Отзывы клиентов: видео, текстовые, о тренировках, товарах, сервисе. Рейтинг и фильтрация.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header><!-- навигация --></header>
+    <main>
+      <section class="reviews-section">
+        <div class="container">
+          <h2>Отзывы клиентов</h2>
+          <div class="reviews-menu">
+            <button>Тренировки</button>
+            <button>О товарах</button>
+            <button>Об обслуживании</button>
+          </div>
+          <div class="reviews-list">
+            <div class="review">
+              <p><strong>Светлана:</strong> "Занимаюсь год — потрясающие тренеры, дружеская атмосфера!" ★★★★★</p>
+            </div>
+            <div class="review">
+              <p><strong>Артур:</strong> "Очень доволен экипировкой, доставка на следующий день." ★★★★★</p>
+            </div>
+          </div>
+          <form class="review-form">
+            <label>Оценка
+              <select name="rating">
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+              </select>
+            </label>
+            <textarea name="review" placeholder="Ваш отзыв"></textarea>
+            <button type="submit">Отправить отзыв</button>
+          </form>
+        </div>
+      </section>
+    </main>
+</body>
+</html>
