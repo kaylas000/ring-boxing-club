@@ -1,0 +1,17 @@
+/* Стили форм: input, select, чекбокс, валидация */
+input, select, textarea {
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.65em 1em;
+  margin-bottom: 1rem;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+.form-error {
+  color: var(--danger);
+  font-size: 0.95em;
+}

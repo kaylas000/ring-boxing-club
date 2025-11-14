@@ -1,0 +1,11 @@
+/* Карточки товаров, статей, тренеров, тени, анимации */
+.card {
+  background: var(--accent);
+  border-radius: 7px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  padding: 1rem;
+}
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  transform: translateY(-3px);
+}

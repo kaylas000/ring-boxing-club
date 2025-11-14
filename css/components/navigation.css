@@ -1,0 +1,19 @@
+/* Главная навигация, хлебные крошки, пагинация */
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: var(--secondary);
+}
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+.breadcrumb {
+  font-size: 1em;
+  color: var(--text-secondary);
+}
+.pagination {
+  display: flex; gap: 0.5em; justify-content: center; }
+.pagination .page { padding: 0.5em; cursor: pointer; }
