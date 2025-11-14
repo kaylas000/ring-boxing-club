@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформление заказа | Ring Boxing Club</title>
+    <meta name="description" content="Оформите заказ экипировки: доставка, оплата, подтверждение, защита персональных данных.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header><!-- Навигация как на главной --></header>
+    <main>
+        <section class="checkout">
+            <div class="container">
+                <h2>Оформление заказа</h2>
+                <form class="checkout-form">
+                    <fieldset>
+                        <legend>Контактные данные</legend>
+                        <label for="checkout-name">Имя</label>
+                        <input id="checkout-name" name="name" required autocomplete="name">
+                        <label for="checkout-phone">Телефон</label>
+                        <input id="checkout-phone" name="phone" required autocomplete="tel">
+                        <label for="checkout-email">Email</label>
+                        <input id="checkout-email" name="email" type="email" required autocomplete="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Доставка</legend>
+                        <label><input type="radio" name="delivery" value="courier" checked> Курьером</label>
+                        <label><input type="radio" name="delivery" value="pickup"> Самовывоз</label>
+                        <label><input type="radio" name="delivery" value="post"> Почта</label>
+                        <label for="address">Адрес доставки</label>
+                        <input id="address" name="address" required>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Оплата</legend>
+                        <label><input type="radio" name="payment" value="card" checked> Онлайн-картой</label>
+                        <label><input type="radio" name="payment" value="cash"> Наличными</label>
+                    </fieldset>
+                    <div class="checkout-footer">
+                        <input type="checkbox" name="policy" required> Подтверждаю согласие с <a href="templates/privacy-policy.html" target="_blank">политикой</a>
+                        <button type="submit">Завершить оформление</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
