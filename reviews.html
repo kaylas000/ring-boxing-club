@@ -1,1 +1,149 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Отзывы - Ring Boxing Club</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="nav"><div class="logo">🥊 RING BOXING</div><ul class="nav-menu"><li><a href="index.html">Главная</a></li><li><a href="training.html">Тренировки</a></li><li><a href="shop.html">Магазин</a></li><li><a href="blog.html">Блог</a></li><li><a href="contacts.html">Контакты</a></li></ul><div class="nav-actions"><button class="cart-btn">🛒 <span class="cart-count">0</span></button></div></nav></header><main><section class="hero"><div class="container"><h1>Отзывы о Нас</h1><p>Мнения наших занимающихся</p></div></section><section class="section"><div class="container"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:2rem 0;"><div style="background:#0a0a0a;border:1px solid #d4af37;padding:1.5rem;border-radius:8px;"><p style="color:#999;font-style:italic;margin-bottom:1rem;">"Отличные тренеры и уникальные программы!"</p><p style="color:#d4af37;font-weight:bold;">Александр, Тренируюсь 2 года</p></div><div style="background:#0a0a0a;border:1px solid #d4af37;padding:1.5rem;border-radius:8px;"><p style="color:#999;font-style:italic;margin-bottom:1rem;">"Настоящая портал для будущих чемпионов!"</p><p style="color:#d4af37;font-weight:bold;">Мария, Понедельник-Энтузиаст</p></div></div></div></section></main><footer class="footer"><div class="container"><p>&copy; 2024 Ring Boxing Club</p></div></footer><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - Ring Boxing Club</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .reviews-container { max-width: 900px; margin: 0 auto; }
+        .review-card { background: #1a1a1a; padding: 25px; margin-bottom: 20px; border-left: 4px solid #00d4ff; border-radius: 3px; }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .review-author { color: #00d4ff; font-weight: bold; font-size: 16px; }
+        .review-rating { color: #ffc107; font-size: 14px; }
+        .review-text { color: #ccc; line-height: 1.6; margin-bottom: 10px; }
+        .review-date { color: #666; font-size: 12px; }
+        .star { color: #ffc107; }
+        .add-review-btn { background: #00d4ff; color: #000; padding: 12px 30px; border: none; border-radius: 3px; cursor: pointer; font-weight: bold; margin: 20px 0; display: inline-block; }
+        .add-review-btn:hover { background: #00b8cc; }
+    </style>
+</head>
+<body style="background: #000; color: #fff; font-family: Arial, sans-serif;">
+    <header style="background: #1a1a1a; padding: 20px 0; border-bottom: 2px solid #00d4ff;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+            <h1 style="margin: 0; color: #00d4ff; font-size: 24px;"><a href="./index.html" style="color: #00d4ff; text-decoration: none;">Ring Boxing Club</a></h1>
+            <nav style="display: flex; gap: 20px;">
+                <a href="./index.html" style="color: #fff; text-decoration: none; font-size: 14px;">Главная</a>
+                <a href="./training.html" style="color: #fff; text-decoration: none; font-size: 14px;">Тренировки</a>
+                <a href="./blog.html" style="color: #fff; text-decoration: none; font-size: 14px;">Блог</a>
+                <a href="./shop.html" style="color: #fff; text-decoration: none; font-size: 14px;">Магазин</a>
+                <a href="./schedule.html" style="color: #fff; text-decoration: none; font-size: 14px;">Расписание</a>
+                <a href="./gallery.html" style="color: #fff; text-decoration: none; font-size: 14px;">Галерея</a>
+                <a href="./about.html" style="color: #fff; text-decoration: none; font-size: 14px;">О нас</a>
+                <a href="./contacts.html" style="color: #fff; text-decoration: none; font-size: 14px;">Контакты</a>
+                <a href="./faq.html" style="color: #fff; text-decoration: none; font-size: 14px;">FAQ</a>
+                <a href="./reviews.html" style="color: #00d4ff; text-decoration: none; font-size: 14px; font-weight: bold;">Отзывы</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="background: linear-gradient(135deg, #1a1a1a, #0a0a0a); padding: 80px 20px; text-align: center; border-bottom: 2px solid #00d4ff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h1 style="font-size: 48px; margin: 0 0 20px 0; color: #00d4ff;">Отзывы <span style="color: #fff;">наших клиентов</span></h1>
+            <p style="font-size: 18px; color: #999; margin: 0;">Читайте о своём боксе на примере успешных учеников</p>
+        </div>
+    </section>
+
+    <main style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+        <div class="reviews-container">
+            <h2 style="color: #00d4ff; font-size: 32px; margin-bottom: 30px;">Что говорят наши ученики</h2>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Иван Петров</span>
+                    <span class="review-rating"><span class="star">★★★★★</span> 5/5</span>
+                </div>
+                <p class="review-text">Отличный клуб! Тренеры очень профессиональные и внимательные. За 3 месяца я заметил серьезный прогресс. Рекомендую всем, кто хочет научиться боксу или улучшить свои навыки!</p>
+                <p class="review-date">15 декабря 2024</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Мария Сидорова</span>
+                    <span class="review-rating"><span class="star">★★★★★</span> 5/5</span>
+                </div>
+                <p class="review-text">Пришла в клуб нерешительной девушкой, а через полгода уже участвую в соревнованиях. Благодарна тренерам за их поддержку и мотивацию. Это лучший выбор, который я когда-либо делала для своего здоровья!</p>
+                <p class="review-date">14 декабря 2024</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Алексей Морозов</span>
+                    <span class="review-rating"><span class="star">★★★★☆</span> 4/5</span>
+                </div>
+                <p class="review-text">Качественная подготовка, хорошее оборудование. Единственное - хотелось бы больше групповых занятий по выходным. Но в целом очень доволен результатами и буду продолжать заниматься.</p>
+                <p class="review-date">13 декабря 2024</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Олег Кузнецов</span>
+                    <span class="review-rating"><span class="star">★★★★★</span> 5/5</span>
+                </div>
+                <p class="review-text">Профессиональный подход ко всему. Тренеры не только учат боксу, но и формируют характер. Я прошел от новичка до любительского разряда за год занятий. Спасибо Ring Boxing Club!</p>
+                <p class="review-date">12 декабря 2024</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Юлия Волкова</span>
+                    <span class="review-rating"><span class="star">★★★★★</span> 5/5</span>
+                </div>
+                <p class="review-text">Начала заниматься в клубе для здоровья и физической формы. Результаты потрясающие! Не только похудела на 8 кг, но и получила массу позитивных эмоций. Атмосфера в клубе очень дружелюбная и мотивирующая.</p>
+                <p class="review-date">11 декабря 2024</p>
+            </div>
+
+            <button class="add-review-btn" onclick="alert('Спасибо за внимание! Оставить отзыв можно через форму контактов')">Оставить свой отзыв</button>
+        </div>
+    </main>
+
+    <footer style="background: #1a1a1a; padding: 30px 20px; margin-top: 40px; border-top: 2px solid #00d4ff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px;">
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 15px;">Навигация</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="./index.html" style="color: #999; text-decoration: none;">Главная</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./training.html" style="color: #999; text-decoration: none;">Тренировки</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./schedule.html" style="color: #999; text-decoration: none;">Расписание</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./contacts.html" style="color: #999; text-decoration: none;">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 15px;">Магазин</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="./shop.html" style="color: #999; text-decoration: none;">Товары</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./cart.html" style="color: #999; text-decoration: none;">Корзина</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./checkout.html" style="color: #999; text-decoration: none;">Оформить заказ</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./order-confirmation.html" style="color: #999; text-decoration: none;">Подтверждение</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 15px;">Информация</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="./about.html" style="color: #999; text-decoration: none;">О клубе</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./blog.html" style="color: #999; text-decoration: none;">Блог</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./gallery.html" style="color: #999; text-decoration: none;">Галерея</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./reviews.html" style="color: #00d4ff; text-decoration: none; font-weight: bold;">Отзывы</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 15px;">Поддержка</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="./faq.html" style="color: #999; text-decoration: none;">FAQ</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./privacy.html" style="color: #999; text-decoration: none;">Конфиденциальность</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./terms.html" style="color: #999; text-decoration: none;">Условия</a></li>
+                        <li style="margin-bottom: 8px;"><a href="./contacts.html" style="color: #999; text-decoration: none;">Связаться</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333; padding-top: 20px; text-align: center; color: #666;">
+                <p style="margin: 0;">© 2024 Ring Boxing Club. Все права защищены.</p>
+                <p style="margin: 10px 0 0 0; font-size: 12px;">Время работы: Пн-Пт 08:00-22:00, Сб-Вс 10:00-20:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
