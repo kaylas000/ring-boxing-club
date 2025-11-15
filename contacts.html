@@ -1,1 +1,134 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Контакты - Ring Boxing Club</title><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><div class="header-container"><a href="index.html" class="logo">🥊 RING <span>BOXING</span></a><nav><a href="index.html">Главная</a><a href="training.html">Тренировки</a><a href="blog.html">Блог</a><a href="shop.html">Магазин</a><a href="schedule.html">Расписание</a><a href="contacts.html">Контакты</a><button class="cart-button">🛒</button></nav></div></header><section class="hero"><div class="hero-content"><h1>Свяжитесь <span>с нами</span></h1><p>Мы всегда рады вас слышать</p></div></section><section class="container"><h2>Контактная <span>информация</span></h2><div class="articles-grid"><div class="article-card"><h3>Адрес</h3><p>г. Москва, ул. Боксёрская, 1</p><p>Метро: Спортивная</p></div><div class="article-card"><h3>Телефон</h3><p>+7 (999) 123-45-67</p><p>График: пн-вс: 06:00-22:00</p><p>Сб: 09:00-20:00</p><p>Вс: 10:00-18:00</p></div><div class="article-card"><h3>Email</h3><p>info@ringboxing.ru</p><p>На вопросы отвечаем 24 часа</p></div></div></section><section class="container"><h2>Выслать <span>сообщение</span></h2><div class="form-container"><form><label>Имя</label><input type="text" placeholder="Ваше имя" required><label>Email</label><input type="email" placeholder="Ваш email" required><label>Тема</label><input type="text" placeholder="u041aакая тема?" required><label>Сообщение</label><textarea placeholder="Ваше сообщение..." required></textarea><button type="submit">Отправить</button></form></div></section><footer><p>&copy; 2025 Ring Boxing Club</p></footer><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Ring Boxing Club</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="./index.html" class="logo">🥊 RING <span>BOXING</span></a>
+            <nav>
+                <a href="./index.html">Главная</a>
+                <a href="./training.html">Тренировки</a>
+                <a href="./blog.html">Блог</a>
+                <a href="./shop.html">Магазин</a>
+                <a href="./schedule.html">Расписание</a>
+                <a href="./gallery.html">Галерея</a>
+                <a href="./about.html">О нас</a>
+                <a href="./contacts.html" class="active">Контакты</a>
+                <a href="./faq.html">FAQ</a>
+                <button class="cart-button">🛒 Корзина</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Свяжитесь с <span>Нами</span></h1>
+            <p>Мы готовы ответить на все ваши вопросы</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Контактная <span>Информация</span></h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+            <div>
+                <h3>📍 Адрес</h3>
+                <p>ул. Спортивная, 42</p>
+                <p>Москва, 125000</p>
+                <p>Россия</p>
+            </div>
+            
+            <div>
+                <h3>📞 Телефон</h3>
+                <p>+7 (495) 123-45-67</p>
+                <p>+7 (495) 765-43-21</p>
+                <p style="margin-top: 10px; font-size: 12px; color: #888;">Доступны с 9:00 до 21:00</p>
+            </div>
+            
+            <div>
+                <h3>✉️ Email</h3>
+                <p><a href="mailto:info@ringboxing.ru" style="color: #0066ff; text-decoration: none;">info@ringboxing.ru</a></p>
+                <p><a href="mailto:support@ringboxing.ru" style="color: #0066ff; text-decoration: none;">support@ringboxing.ru</a></p>
+            </div>
+            
+            <div>
+                <h3>⏰ Режим Работы</h3>
+                <p>Пн-Сб: 9:00 - 21:00</p>
+                <p>Вс: Выходной</p>
+                <p style="margin-top: 10px; font-size: 12px; color: #888;">Тренировки каждый день</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Напишите нам <span>Форму</span></h2>
+        
+        <form style="max-width: 500px; margin: 30px auto;">
+            <div style="margin-bottom: 20px;">
+                <label for="name" style="display: block; margin-bottom: 5px;">Ваше Имя:</label>
+                <input type="text" id="name" name="name" placeholder="Иван Петров" style="width: 100%; padding: 10px; border: 1px solid #0066ff; border-radius: 5px; background-color: #2a2a2a; color: #fff;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+                <input type="email" id="email" name="email" placeholder="ivan@example.com" style="width: 100%; padding: 10px; border: 1px solid #0066ff; border-radius: 5px; background-color: #2a2a2a; color: #fff;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="phone" style="display: block; margin-bottom: 5px;">Телефон:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (495) 123-45-67" style="width: 100%; padding: 10px; border: 1px solid #0066ff; border-radius: 5px; background-color: #2a2a2a; color: #fff;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="subject" style="display: block; margin-bottom: 5px;">Тема:</label>
+                <input type="text" id="subject" name="subject" placeholder="Вопрос о тренировках" style="width: 100%; padding: 10px; border: 1px solid #0066ff; border-radius: 5px; background-color: #2a2a2a; color: #fff;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="message" style="display: block; margin-bottom: 5px;">Сообщение:</label>
+                <textarea id="message" name="message" rows="6" placeholder="Ваше сообщение..." style="width: 100%; padding: 10px; border: 1px solid #0066ff; border-radius: 5px; background-color: #2a2a2a; color: #fff; font-family: Arial;"></textarea>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%;">Отправить</button>
+        </form>
+    </section>
+
+    <section class="container">
+        <h2>Найти <span>Нас на Карте</span></h2>
+        <div style="margin: 30px 0; background-color: #2a2a2a; padding: 20px; border-radius: 5px; text-align: center;">
+            <p>🗺️ Карта будет добавлена</p>
+            <p style="font-size: 14px; color: #888;">Интерактивная карта с указанием нашего местоположения</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Быстрые <span>Ссылки</span></h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;">
+            <a href="./index.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Главная</a>
+            <a href="./training.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Тренировки</a>
+            <a href="./schedule.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Расписание</a>
+            <a href="./blog.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Блог</a>
+            <a href="./shop.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Магазин</a>
+            <a href="./gallery.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Галерея</a>
+            <a href="./about.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">О нас</a>
+            <a href="./contacts.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Контакты</a>
+            <a href="./faq.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">FAQ</a>
+            <a href="./reviews.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Отзывы</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+            <p>Режим работы: Пн-Сб 9:00-21:00, Вс - выходной</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
