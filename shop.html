@@ -20,7 +20,7 @@
                 <a href="./about.html">О нас</a>
                 <a href="./contacts.html">Контакты</a>
                 <a href="./faq.html">FAQ</a>
-                <button class="cart-button">🛒 Корзина</button>
+                <button class="cart-button" data-cart-link>🛒 Корзина</button>
             </nav>
         </div>
     </header>
@@ -41,31 +41,26 @@
                 <p>Боксёрские перчатки разных размеров</p>
                 <button class="btn">Просмотреть</button>
             </div>
-
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px; text-align: center;">
                 <h3>🪦 Шлемы</h3>
                 <p>Защитные шлемы от известных брендов</p>
                 <button class="btn">Просмотреть</button>
             </div>
-
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px; text-align: center;">
                 <h3>🧤 Бинты</h3>
                 <p>Бинты для защиты рук и запястий</p>
                 <button class="btn">Просмотреть</button>
             </div>
-
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px; text-align: center;">
                 <h3>👄 Капы</h3>
                 <p>Защитные капы разных размеров</p>
                 <button class="btn">Просмотреть</button>
             </div>
-
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px; text-align: center;">
                 <h3>👕 Одежда</h3>
                 <p>Спортивная одежда и костюмы</p>
                 <button class="btn">Просмотреть</button>
             </div>
-
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px; text-align: center;">
                 <h3>⚙️ Оборудование</h3>
                 <p>Тренировочное и спортивное оборудование</p>
@@ -80,50 +75,45 @@
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-image">🥊</div>
-                <h3>Боксёрские Перчатки</h3>
+                <h3 data-product-name>Боксёрские Перчатки</h3>
                 <p>Профессиональные перчатки для тренировок</p>
-                <p><strong>3,500 - 8,000₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>3500</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Боксёрские Перчатки" data-product-price="3500" data-product-image="🥊">Добавить в корзину</button>
             </div>
-
             <div class="product-card">
                 <div class="product-image">🪦</div>
-                <h3>Защитный Шлем</h3>
+                <h3 data-product-name>Защитный Шлем</h3>
                 <p>Премиум защитный шлем</p>
-                <p><strong>5,000 - 12,000₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>8000</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Защитный Шлем" data-product-price="8000" data-product-image="🪦">Добавить в корзину</button>
             </div>
-
             <div class="product-card">
                 <div class="product-image">🧤</div>
-                <h3>Бинты для Рук</h3>
+                <h3 data-product-name>Бинты для Рук</h3>
                 <p>Хлопковые бинты со скрытым эластичным слоем</p>
-                <p><strong>500 - 1,500₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>1500</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Бинты для Рук" data-product-price="1500" data-product-image="🧤">Добавить в корзину</button>
             </div>
-
             <div class="product-card">
                 <div class="product-image">👄</div>
-                <h3>Капа</h3>
+                <h3 data-product-name>Капа</h3>
                 <p>Защитная капа для зубов</p>
-                <p><strong>1,000 - 3,000₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>2500</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Капа" data-product-price="2500" data-product-image="👄">Добавить в корзину</button>
             </div>
-
             <div class="product-card">
                 <div class="product-image">👕</div>
-                <h3>Боксёрская Форма</h3>
+                <h3 data-product-name>Боксёрская Форма</h3>
                 <p>Спортивная форма для соревнований</p>
-                <p><strong>2,000 - 5,000₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>5000</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Боксёрская Форма" data-product-price="5000" data-product-image="👕">Добавить в корзину</button>
             </div>
-
             <div class="product-card">
                 <div class="product-image">⚙️</div>
-                <h3>Боксёрский Мешок</h3>
+                <h3 data-product-name>Боксёрский Мешок</h3>
                 <p>Тяжелый боксёрский мешок</p>
-                <p><strong>15,000 - 35,000₽</strong></p>
-                <button class="btn">Просмотреть</button>
+                <p data-price><strong>25000</strong></p>
+                <button class="btn add-to-cart" data-add-to-cart data-product-name="Боксёрский Мешок" data-product-price="25000" data-product-image="⚙️">Добавить в корзину</button>
             </div>
         </div>
     </section>
@@ -141,12 +131,14 @@
             <a href="./contacts.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Контакты</a>
             <a href="./faq.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">FAQ</a>
             <a href="./reviews.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Отзывы</a>
+            <a href="./cart.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Корзина</a>
+            <a href="./checkout.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Оформление</a>
         </div>
     </section>
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+            <p>© 2025 Ring Boxing Club. Все права защищены.</p>
             <p>Режим работы: Пн-Сб 9:00-21:00, Вс - выходной</p>
         </div>
     </footer>
