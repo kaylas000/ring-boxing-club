@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ring Boxing Club - Премиум Боксёрский Клуб</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .btn-red {
+            background: linear-gradient(90deg, #ff2828 0%, #dc2626 100%);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            box-shadow: 0 6px 28px rgba(255,0,0,0.11);
+            padding: 0.9rem 2.2rem;
+            font-size: 1.15rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+            letter-spacing: 0.1em;
+            transition: background 0.2s, transform 0.2s;
+            text-transform: uppercase;
+        }
+        .btn-red:hover {
+            background: linear-gradient(90deg, #dc2626 0%, #ff2828 100%);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 16px 36px rgba(255, 0, 0, 0.13);
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <a href="./index.html" class="logo">🥊 RING <span>BOXING</span></a>
-            <nav>
-                <a href="./index.html" class="active">Главная</a>
-                <a href="./training.html">Тренировки</a>
-                <a href="./blog.html">Блог</a>
-                <a href="./shop.html">Магазин</a>
-                <a href="./schedule.html">Расписание</a>
-                <a href="./gallery.html">Галерея</a>
-                <a href="./about.html">О нас</a>
-                <a href="./contacts.html">Контакты</a>
-                <a href="./faq.html">FAQ</a>
-                <button class="cart-button">🛒 Корзина</button>
-            </nav>
-        </div>
-    </header>
+    <header class="header">[...HEADER...]</header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Добро Пожаловать в <span>RING</span></h1>
             <p>Премиум Боксёрский Клуб для Профессионалов и Любителей</p>
-            <button class="btn" style="margin-top: 20px; background-color:#FF0000; color:white;">Начните Тренировки Сегодня</button>
+            <button class="btn-red">Начните Тренировки Сегодня</button>
         </div>
     </section>
 
@@ -40,25 +46,25 @@
                 <div class="product-image">🏆</div>
                 <h3>Профессиональные Тренеры</h3>
                 <p>Опытные инструкторы с сертификатами международного уровня</p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
             <div class="product-card">
                 <div class="product-image">🥇</div>
                 <h3>Современное Оборудование</h3>
                 <p>Новейшие боксёрские мешки, ринги и тренажеры</p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
             <div class="product-card">
                 <div class="product-image">👥</div>
                 <h3>Дружная Команда</h3>
                 <p>Поддерживающее сообщество единомышленников</p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
             <div class="product-card">
                 <div class="product-image">📅</div>
                 <h3>Удобное Расписание</h3>
                 <p>Тренировки каждый день для всех уровней</p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
         </div>
     </section>
@@ -75,7 +81,7 @@
                     <li>Правильная дыхание</li>
                     <li>Защитные движения</li>
                 </ul>
-                <button class="btn" style="background-color:#FF0000; color:white;">Записаться</button>
+                <button class="btn-red">Записаться</button>
             </div>
             <div class="product-card">
                 <div class="product-image">💪</div>
@@ -86,7 +92,7 @@
                     <li>Тактика боя</li>
                     <li>Физическая подготовка</li>
                 </ul>
-                <button class="btn" style="background-color:#FF0000; color:white;">Записаться</button>
+                <button class="btn-red">Записаться</button>
             </div>
             <div class="product-card">
                 <div class="product-image">🌟</div>
@@ -97,7 +103,7 @@
                     <li>Подготовка к боям</li>
                     <li>Персональный коуч</li>
                 </ul>
-                <button class="btn" style="background-color:#FF0000; color:white;">Записаться</button>
+                <button class="btn-red">Записаться</button>
             </div>
         </div>
     </section>
@@ -108,17 +114,17 @@
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px;">
                 <h3>🎯 Техника правильного джеба</h3>
                 <p>Научитесь правильной технике джеба для эффективных атак</p>
-                <a href="./blog.html" style="color: #0066ff; text-decoration: none;"><button class="btn" style="background-color:#FF0000; color:white;">Читать далее →</button></a>
+                <a href="./blog.html"><button class="btn-red">Читать далее →</button></a>
             </div>
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px;">
                 <h3>🥗 Питание для боксёра</h3>
                 <p>Полное руководство по правильному питанию спортсмена</p>
-                <a href="./blog.html" style="color: #0066ff; text-decoration: none;"><button class="btn" style="background-color:#FF0000; color:white;">Читать далее →</button></a>
+                <a href="./blog.html"><button class="btn-red">Читать далее →</button></a>
             </div>
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px;">
                 <h3>💪 Упражнения на силу</h3>
                 <p>Эффективные упражнения для развития силы и выносливости</p>
-                <a href="./blog.html" style="color: #0066ff; text-decoration: none;"><button class="btn" style="background-color:#FF0000; color:white;">Читать далее →</button></a>
+                <a href="./blog.html"><button class="btn-red">Читать далее →</button></a>
             </div>
         </div>
     </section>
@@ -131,28 +137,28 @@
                 <h3>Боксёрские Перчатки</h3>
                 <p>Премиум перчатки для комфортной тренировки</p>
                 <p><strong>от 3,500₽</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">В Корзину</button>
+                <button class="btn-red">В Корзину</button>
             </div>
             <div class="product-card">
                 <div class="product-image">🪦</div>
                 <h3>Защитный Шлем</h3>
                 <p>Профессиональный защитный шлем</p>
                 <p><strong>от 5,000₽</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">В Корзину</button>
+                <button class="btn-red">В Корзину</button>
             </div>
             <div class="product-card">
                 <div class="product-image">🧤</div>
                 <h3>Бинты для Рук</h3>
                 <p>Надёжные бинты для защиты запястий</p>
                 <p><strong>от 500₽</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">В Корзину</button>
+                <button class="btn-red">В Корзину</button>
             </div>
             <div class="product-card">
                 <div class="product-image">👄</div>
                 <h3>Капа</h3>
                 <p>Защитная капа для зубов и челюсти</p>
                 <p><strong>от 1,000₽</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">В Корзину</button>
+                <button class="btn-red">В Корзину</button>
             </div>
         </div>
     </section>
@@ -164,19 +170,19 @@
                 <p>⭐⭐⭐⭐⭐</p>
                 <p>"Отличный клуб! Опытные тренеры, хорошее оборудование. Очень доволен результатами!"</p>
                 <p><strong>- Иван П.</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px;">
                 <p>⭐⭐⭐⭐⭐</p>
                 <p>"Начал с нуля, теперь я спортсмен! Благодарен всей команде за поддержку"</p>
                 <p><strong>- Мария К.</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
             <div style="border: 1px solid #0066ff; padding: 20px; border-radius: 5px;">
                 <p>⭐⭐⭐⭐⭐</p>
                 <p>"Лучший боксёрский клуб в городе! Рекомендую всем"</p>
                 <p><strong>- Сергей Л.</strong></p>
-                <button class="btn" style="background-color:#FF0000; color:white;">Подробнее</button>
+                <button class="btn-red">Подробнее</button>
             </div>
         </div>
     </section>
@@ -197,51 +203,7 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px;">
-            <div>
-                <h4>Навигация</h4>
-                <ul>
-                    <li><a href="./index.html">Главная</a></li>
-                    <li><a href="./training.html">Тренировки</a></li>
-                    <li><a href="./schedule.html">Расписание</a></li>
-                    <li><a href="./contacts.html">Контакты</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Магазин</h4>
-                <ul>
-                    <li><a href="./shop.html">Товары</a></li>
-                    <li><a href="./cart.html">Корзина</a></li>
-                    <li><a href="./checkout.html">Оформить заказ</a></li>
-                    <li><a href="./order-confirmation.html">Подтверждение</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Информация</h4>
-                <ul>
-                    <li><a href="./about.html">О клубе</a></li>
-                    <li><a href="./blog.html">Блог</a></li>
-                    <li><a href="./gallery.html">Галерея</a></li>
-                    <li><a href="./reviews.html">Отзывы</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Поддержка</h4>
-                <ul>
-                    <li><a href="./faq.html">FAQ</a></li>
-                    <li><a href="./privacy.html">Конфиденциальность</a></li>
-                    <li><a href="./terms.html">Условия</a></li>
-                    <li><a href="./contacts.html">Связаться</a></li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-top: 1px solid #333; padding-top: 20px; text-align: center; color: #666;">
-            <p style="margin: 0;">© 2025 Ring Boxing Club. Все права защищены.</p>
-            <p style="margin: 10px 0 0 0; font-size: 12px;">Режим работы: Пн-Сб 9:00-21:00, Вс - выходной</p>
-            <p>Email: info@ringboxingclub.ru | Телефон: +7 (495) 123-45-67 | Адрес: Москва, ул. Петровская, д.15</p>
-        </div>
-    </footer>
+    <footer class="footer">[...FOOTER...]</footer>
 
     <script src="./js/main.js"></script>
 </body>
