@@ -1,2 +1,117 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Боксерские Перчатки - Ring Boxing Club</title><link rel="stylesheet" href="../css/style.css"><style>.product-page{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:40px 0}.product-image{background:#f0f0f0;padding:40px;text-align:center;font-size:100px;border-radius:10px}.product-info h1{font-size:32px;margin:20px 0}.price-tag{font-size:28px;color:#FF0000;font-weight:bold;margin:20px 0}.specifications{background:#f9f9f9;padding:20px;border-radius:5px;margin:20px 0}.specifications li{margin:10px 0}.btn-cart{background:#FF0000;color:white;padding:15px 30px;border:none;cursor:pointer;font-size:16px;border-radius:5px;width:100%;margin-top:20px}.reviews{background:#f0f0f0;padding:20px;margin:20px 0;border-radius:5px}@media(max-width:768px){.product-page{grid-template-columns:1fr}}</style></head><body><header class="header"><div class="header-container"><a href="../index.html" class="logo">🥊 RING <span>BOXING</span></a><nav><a href="../index.html">Главная</a><a href="../shop.html">Магазин</a><a href="../blog.html">Блог</a></nav></div></header><section class="container"><div class="product-page"><div class="product-image">🥊</div><div class="product-info"><h1>Профессиональные Боксерские Перчатки Everlast Pro</h1><p class="price-tag">от 3500 ₽</p><h2>Описание</h2><p>Настоящие профессиональные боксерские перчатки с поддержкой запястья для тренировок и соревнований.</p><h2>Характеристики</h2><ul class="specifications"><li><strong>Материал:</strong> Натуральная кожа</li><li><strong>Вес:</strong> 10 оц, 12 оц, 14 оц, 16 оц</li><li><strong>Прокладка:</strong> Гелевая пена</li><li><strong>Цвет:</strong> Красные, Чёрные, Голубые</li><li><strong>Нанюхи:</strong> Мышечная падка 100% геля</li></ul><h2>Преимущества</h2><ul class="specifications"><li>Оптимальная защита рук</li><li>Максимальный комфорт</li><li>Полная вентиляция</li><li>Долговечные</li></ul><button class="btn-cart" onclick="addToCart('Перчатки Everlast', 3500)">🛒 В корзину - 3500 ₽</button><a href="../shop.html" class="btn" style="display:block;text-align:center;margin-top:10px">Назад в Магазин</a></div></div><h2>Отзывы</h2><div class="reviews"><div class="review-item" style="margin-bottom:15px"><p><strong>Костя Р.в </strong>(★★★★★)</p><p>"Отличные перчатки! Очень удобные, они хорошо сидят на руке. На цену не жалую"</p></div><div class="review-item" style="margin-bottom:15px"><p><strong>Алексей М.</strong> (★★★★★)</p><p>"Порекомендую всем, кто серьёзно занимается боксом. Качество прекрасно."</p></div></div></section><footer><p>&copy; 2025 Ring Boxing Club</p></footer><script>function addToCart(name, price){alert(name + ' добавлен в корзину!
-Цена: ' + price + ' ₽');localStorage.setItem('lastProduct', JSON.stringify({name, price, date: new Date()}))}</script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Боксёрские Перчатки - Ring Boxing Club</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">🥊 RING <span>BOXING</span></a>
+            <nav>
+                <a href="../index.html">Главная</a>
+                <a href="../training.html">Тренировки</a>
+                <a href="../blog.html">Блог</a>
+                <a href="../shop.html">Магазин</a>
+                <a href="../schedule.html">Расписание</a>
+                <a href="../gallery.html">Галерея</a>
+                <a href="../about.html">О нас</a>
+                <a href="../contacts.html">Контакты</a>
+                <a href="../faq.html">FAQ</a>
+                <button class="cart-button" data-cart-link>🛒 Корзина</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Боксёрские <span>Перчатки</span></h1>
+            <p>Профессиональные перчатки для тренировок и боёв</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="product-section">
+            <div class="product-header">
+                <div class="product-image">🥊</div>
+                <div class="product-info">
+                    <h1 data-product-name>Боксёрские Перчатки</h1>
+                    <p class="price-tag" data-price>5500₽</p>
+                    <p class="description">
+                        Профессиональные боксёрские перчатки из кожи высокого качества. 
+                        Обеспечивают надёжную защиту рук и костяшек при боевых тренировках.
+                    </p>
+                    <button class="btn add-to-cart" data-add-to-cart data-product-name="Боксёрские Перчатки" data-product-price="5500" data-product-image="🥊">
+                        Добавить в корзину
+                    </button>
+                </div>
+            </div>
+
+            <div class="specs-section">
+                <h2>Характеристики</h2>
+                <ul class="specs-list">
+                    <li><strong>Материал:</strong> Натуральная кожа</li>
+                    <li><strong>Размеры:</strong> 8oz, 10oz, 12oz, 14oz, 16oz</li>
+                    <li><strong>Наполнение:</strong> Многослойная пена</li>
+                    <li><strong>Цвет:</strong> Красный, синий, чёрный, белый</li>
+                    <li><strong>Тип:</strong> Любительские и профессиональные</li>
+                </ul>
+            </div>
+
+            <div class="advantages">
+                <h3>Преимущества</h3>
+                <ul>
+                    <li>✓ Натуральная кожа высшего качества</li>
+                    <li>✓ Отличная амортизация удара</li>
+                    <li>✓ Удобная посадка по руке</li>
+                    <li>✓ Долговечность при интенсивных тренировках</li>
+                    <li>✓ Одобрены международными федерациями бокса</li>
+                    <li>✓ Эргономический дизайн для максимального комфорта</li>
+                </ul>
+            </div>
+
+            <div class="specs-section">
+                <h2>Рекомендации</h2>
+                <p style="color: #FFFFFF; margin: 15px 0;">
+                    Выбор размера: 8-10 oz для начинающих, 12-14 oz для любителей, 16 oz для профессионалов.<br>
+                    Используйте боксёрские бинты для лучшей поддержки запястья.<br>
+                    Регулярно проветривайте перчатки после тренировок.
+                </p>
+            </div>
+
+            <div class="specs-section">
+                <h2>Отзывы</h2>
+                <p style="color: #FFFFFF; margin: 15px 0;">
+                    ⭐⭐⭐⭐⭐ "Отличные перчатки! Кожа качественная, удобные" - Алексей М.<br>
+                    ⭐⭐⭐⭐⭐ "Рекомендую для серьезных тренировок!" - Виталий К.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Другие <span>Товары</span></h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;">
+            <a href="../shop.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Магазин</a>
+            <a href="../index.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Главная</a>
+            <a href="../training.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Тренировки</a>
+            <a href="../schedule.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Расписание</a>
+            <a href="../gallery.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Галерея</a>
+            <a href="../about.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">О нас</a>
+            <a href="../contacts.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Контакты</a>
+            <a href="../cart.html" style="padding: 10px; border: 1px solid #0066ff; text-align: center; text-decoration: none; color: #fff; border-radius: 5px;">Корзина</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ring Boxing Club. Все права защищены.</p>
+            <p>Режим работы: Пн-Сб 9:00-21:00, Вс - выходной</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
