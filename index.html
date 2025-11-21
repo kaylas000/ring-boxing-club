@@ -3,45 +3,1924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ring Boxing Club - Спортивные товары</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="RING BOXING CLUB - премиальный боксерский клуб с экипировкой Gold & Silver. Профессиональные тренировки, авторские курсы и элитная экипировка.">
+    <meta name="keywords" content="бокс, тренировки по боксу, экипировка для бокса, золотые перчатки, серебряный шлем, боксерский клуб">
+    <meta name="author" content="RING BOXING CLUB">
+    <title>RING BOXING CLUB – Premium Gold & Silver | Боксерский клуб премиум-класса</title>
+    
+    <!-- PWA и производительность -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#C8B273">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥊</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        :root {
+            --black: #151516;
+            --black2: #222224;
+            --gold-metal: #C8B273;
+            --gold-bright: #92742e;
+            --silver-metal: #BFC7C7;
+            --silver-bright: #989fa1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Оптимизация шрифтов */
+        @font-face {
+            font-family: 'Montserrat';
+            font-display: swap;
+            src: local('Montserrat');
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--black);
+            color: #ECECEC;
+            margin: 0;
+            padding-top: 70px;
+            line-height: 1.6;
+        }
+
+        /* Оптимизация изображений */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy-loaded {
+            opacity: 1;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--gold-metal);
+            color: var(--black);
+            padding: 8px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: var(--black2);
+            padding: 12px 0;
+            box-shadow: 0 2px 22px #000c;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1300px; 
+            margin: auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+            height: 46px;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            color: var(--gold-metal);
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 0 1px 15px #a49051cc, 0 2px 8px #fff5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .logo:hover {
+            color: #E8CE86;
+            text-shadow: 0 1px 20px #C8B273cc, 0 2px 12px #fff7;
+            transform: scale(1.05);
+        }
+        
+        .logo span {
+            color: var(--silver-metal); 
+            text-shadow: 0 1px 9px #ECECEC88;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover span {
+            color: #ECECEC;
+            text-shadow: 0 1px 12px #ECECECcc;
+        }
+        
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .menu a {
+            color: #ECECEC;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 800;
+            transition: .2s;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .menu a:hover {
+            color: var(--gold-metal);
+            text-shadow: 0 1px 10px #C8B27388;
+        }
+
+        .menu-item-has-children {
+            position: relative;
+        }
+
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--black2);
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--gold-metal);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sub-menu a {
+            display: block;
+            padding: 12px 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(200, 178, 115, 0.1);
+            font-size: 0.9rem;
+            color: var(--silver-metal);
+        }
+
+        .sub-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .sub-menu a:hover {
+            background: rgba(200, 178, 115, 0.1);
+            color: var(--gold-metal);
+        }
+
+        .menu-item-has-children:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sub-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--gold-metal);
+        }
+
+        .cart-btn {
+            background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+            border: 2px solid var(--gold-metal);
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            box-shadow: 0 3px 14px #C8B27311;
+            cursor: pointer;
+            transition: box-shadow .19s, background .2s, transform .11s;
+            position: relative;
+        }
+        
+        .cart-btn:hover {
+            box-shadow: 0 0 17px #C8B27377, 0 3px 19px #C8B27344;
+            background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+            transform: scale(1.06);
+        }
+        
+        .cart-btn svg {
+            display: block;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--gold-bright);
+            color: #181710;
+            border-radius: 50%;
+            font-size: 0.7em;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            box-shadow: 0 1px 7px #fff2;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(21,21,22,0.9) 0%, rgba(34,34,36,0.8) 100%), url('rg.png') center center/cover no-repeat;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-inner {
+            max-width: 940px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .hero-inner h1 {
+            font-size: 2.5rem;
+            color: var(--gold-metal);
+            letter-spacing: 2px;
+            text-shadow: 0 3px 22px #380016, 0 1px 10px #92742e55;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero-inner p {
+            font-size: 1.1rem;
+            margin: 15px auto 12px auto;
+            color: var(--gold-metal);
+            max-width: 800px;
+            text-shadow: 0 2px 10px #380016;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .cta-bar { 
+            margin: 25px 0 0 0;
+            text-align: center;
+        }
+        
+        .btn-gold, .btn-silver {
+            display: inline-block;
+            border: none;
+            border-radius: 12px;
+            padding: 1.05em 2.25em;
+            font-size: 1.12em;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin: 5px 9px;
+            letter-spacing: .04em;
+            transition: background 0.18s, color 0.15s, box-shadow 0.19s, transform 0.13s;
+            text-decoration: none;
+            text-align: center;
+            min-width: 210px;
+            box-sizing: border-box;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+            color: var(--gold-metal);
+            box-shadow: 0 8px 27px #C8B27333;
+            border: 2px solid var(--gold-metal);
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+            color: #E8CE86;
+            box-shadow: 0 0 44px #C8B27388, 0 8px 52px #C8B27344;
+            transform: scale(1.07);
+        }
+        
+        .btn-silver {
+            background: linear-gradient(90deg, #232427 0%, #373b40 100%);
+            color: var(--silver-metal);
+            box-shadow: 0 8px 25px #BFC7C733;
+            border: 2px solid var(--silver-metal);
+        }
+        
+        .btn-silver:hover {
+            background: linear-gradient(90deg, #373b40 0%, #232427 100%);
+            color: #ECECEC;
+            box-shadow: 0 0 44px #BFC7C7bb, 0 8px 52px #BFC7C744;
+            transform: scale(1.07);
+        }
+        
+        /* СЕКЦИИ С ОПТИМИЗИРОВАННЫМИ ОТСТУПАМИ */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-compact {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gold-metal);
+            color: var(--black);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--gold-metal);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            color: var(--silver-metal);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* СЕТКИ */
+        .grid {
+            display: grid;
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* КАРТОЧКИ */
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222224 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(200, 178, 115, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-metal);
+            box-shadow: 0 10px 25px rgba(200, 178, 115, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--gold-metal);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: var(--gold-metal);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: var(--silver-metal);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* О ПРОЕКТЕ */
+        .about {
+            background: var(--black);
+        }
+
+        /* УСЛУГИ */
+        .services {
+            background: linear-gradient(135deg, #151516 0%, #1a1a1d 100%);
+        }
+
+        /* ПРОДУКТЫ */
+        .products {
+            background: var(--black);
+        }
+
+        .product-card {
+            background: linear-gradient(120deg, #19181a 80%, #23221a 100%);
+            border-radius: 19px;
+            box-shadow: 0 10px 46px #08080a55;
+            padding: 26px 20px 32px 20px;
+            text-align: center;
+            border: 2px solid var(--silver-metal);
+            transition: border-color .29s, box-shadow .18s;
+            position: relative;
+        }
+        
+        .product-card:hover { 
+            border-color: var(--gold-metal); 
+            box-shadow: 0 16px 52px #C8B27388;
+        }
+        
+        .product-image {
+            width: 165px;
+            height: 165px;
+            margin: 0 auto 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--black2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 19px #C8B27333;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-card h3 { 
+            color: var(--gold-metal); 
+            margin-bottom: 10px;
+        }
+        
+        .product-card .desc { 
+            color: var(--silver-metal); 
+            margin-bottom: 17px;
+            font-size: 0.95em;
+        }
+        
+        .product-card .price {
+            font-weight: 800;
+            color: #ECECEC;
+            font-size: 1.22em;
+            margin-bottom: 15px;
+            letter-spacing: .03em;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+            border: 2px solid var(--gold-metal);
+            color: var(--gold-metal);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+            color: #E8CE86;
+            box-shadow: 0 0 20px rgba(200, 178, 115, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* ВИДЕО */
+        .videos {
+            background: #151516;
+        }
+
+        .video-card {
+            background: linear-gradient(120deg, #19181a 80%, #23221a 100%);
+            border-radius:17px;
+            box-shadow:0 8px 36px #0007;
+            padding:24px 18px 28px 18px;
+            border: 2.4px solid #BFC7C7;
+            transition: border-color .28s, box-shadow .28s;
+            position: relative;
+        }
+        
+        .video-card.gold { 
+            border-color: var(--gold-metal);
+        }
+        
+        .video-card.silver { 
+            border-color: var(--silver-metal);
+        }
+        
+        .video-card .preview {
+            border-radius:11px; 
+            overflow:hidden; 
+            box-shadow:0 2px 21px #C8B27322;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        
+        .video-card .preview iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .video-card h3 { 
+            margin-top:14px; 
+            color: var(--gold-metal);
+            margin-bottom: 10px;
+        }
+        
+        .video-card p { 
+            color: var(--silver-metal);
+            margin-bottom: 15px;
+        }
+        
+        .video-card.gold:hover {
+            box-shadow: 0 0 55px 0 #C8B273cc, 0 8px 56px 0 #92742e66;
+            border-color: var(--gold-bright);
+            z-index:2;
+        }
+        
+        .video-card.silver:hover {
+            box-shadow: 0 0 54px 0 #989fa1cc, 0 8px 52px 0 #BFC7C7aa;
+            border-color: var(--silver-bright);
+            z-index:2;
+        }
+
+        /* ЭКИПИРОВКА */
+        .equipment {
+            background: linear-gradient(135deg, #151516 0%, #1a1a1d 100%);
+        }
+
+        .equipment-card {
+            background: rgba(34, 34, 36, 0.6);
+            border: 2px solid rgba(200, 178, 115, 0.2);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .equipment-card:hover {
+            border-color: var(--gold-metal);
+            background: rgba(34, 34, 36, 0.9);
+            box-shadow: 0 15px 35px rgba(200, 178, 115, 0.1);
+        }
+
+        .equip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .equipment-card h3 {
+            color: var(--gold-metal);
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .equip-list {
+            list-style: none;
+            padding: 15px 0;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        .equip-list li {
+            padding: 5px 0;
+        }
+
+        .equip-list li::before {
+            content: '✓ ';
+            color: var(--gold-metal);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .price-tag {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 15px 0 0;
+            border-top: 1px solid rgba(200, 178, 115, 0.2);
+            margin-top: 15px;
+        }
+
+        .price-tag.gold {
+            color: var(--gold-metal);
+        }
+
+        .price-tag.silver {
+            color: var(--silver-metal);
+        }
+
+        /* БЛОГ */
+        .blog {
+            background: #151516;
+        }
+
+        .blog-card {
+            background: rgba(34, 34, 36, 0.7);
+            border-left: 4px solid var(--gold-metal);
+            padding: 30px;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:nth-child(2n) {
+            border-left-color: var(--silver-metal);
+        }
+
+        .blog-card:hover {
+            transform: translateX(10px);
+            background: rgba(34, 34, 36, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .blog-date {
+            color: var(--gold-metal);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .blog-card h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(200, 178, 115, 0.2);
+            padding-top: 15px;
+        }
+
+        .category {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(200, 178, 115, 0.1);
+            font-weight: 600;
+        }
+
+        .category.gold {
+            color: var(--gold-metal);
+        }
+
+        .category.silver {
+            color: var(--silver-metal);
+        }
+
+        .read-more {
+            color: var(--gold-metal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--gold-bright);
+        }
+
+        /* ОТЗЫВЫ */
+        .testimonials {
+            background: linear-gradient(135deg, #151516 0%, #1a1a1d 100%);
+        }
+
+        .testimonial-card {
+            background: rgba(34, 34, 36, 0.7);
+            border: 1px solid rgba(200, 178, 115, 0.15);
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(34, 34, 36, 0.95);
+            border-color: var(--gold-metal);
+            box-shadow: 0 20px 40px rgba(200, 178, 115, 0.1);
+        }
+
+        .stars {
+            color: var(--gold-metal);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: #ddd;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(200, 178, 115, 0.2);
+            padding-top: 20px;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            font-size: 0.9rem;
+        }
+
+        .author-avatar.gold {
+            background: var(--gold-metal);
+        }
+
+        .author-avatar.silver {
+            background: var(--silver-metal);
+        }
+
+        .author-info strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: var(--gold-metal);
+        }
+
+        /* КОНТАКТЫ */
+        .contacts {
+            background: #151516;
+        }
+
+        .contacts-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .contact-item p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--gold-metal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold-bright);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            padding: 8px 15px;
+            background: rgba(200, 178, 115, 0.1);
+            border: 1px solid rgba(200, 178, 115, 0.3);
+            border-radius: 4px;
+            color: var(--gold-metal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold-metal);
+            color: #000;
+        }
+
+        .cta-section {
+            background: rgba(34, 34, 36, 0.6);
+            border: 2px solid rgba(200, 178, 115, 0.2);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            color: var(--gold-metal);
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: #bbb;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black2);
+            color: var(--silver-metal);
+            padding: 50px 7% 30px;
+            border-top: 5px solid var(--gold-metal);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            color: var(--gold-metal);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a {
+            color: var(--silver-metal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--gold-metal);
+            transform: translateX(5px);
+        }
+
+        .footer-nav {
+            margin-bottom: 30px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(200, 178, 115, 0.2);
+        }
+
+        .footer-nav a {
+            color: var(--gold-metal);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-nav a:hover {
+            text-decoration: underline;
+            color: #E8CE86;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(200, 178, 115, 0.2);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+            
+            header {
+                padding: 8px 0;
+                height: 60px;
+            }
+            
+            .nav {
+                padding: 0 10px;
+                height: 44px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .hero-inner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-inner p {
+                font-size: 1rem;
+            }
+            
+            .btn-gold, .btn-silver {
+                display: block;
+                margin: 6px auto;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-compact {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contacts-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background: var(--black2);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+                border-top: 1px solid var(--gold-metal);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                margin: 0;
+                padding: 12px 15px;
+                border-bottom: 1px solid rgba(200, 178, 115, 0.2);
+            }
+
+            .sub-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                margin-left: 20px;
+            }
+
+            .sub-menu a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .sub-menu::before {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                margin-left: 15px;
+            }
+            
+            .hamburger div {
+                width: 22px;
+                height: 2.5px;
+                background: var(--gold-metal);
+                margin: 4px 0;
+                transition: 0.3s;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column ul li {
+                justify-content: center;
+            }
+            
+            .footer-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-inner h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .footer-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .hamburger {
+            display: none;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">Клуб RING</div>
-                <ul class="menu">
-                    <li><a href="shop.html">Каталог</a></li>
-                    <li><a href="equipment.html">Снаряжение</a></li>
-                    <li><a href="cosmetic.html">Косметика</a></li>
-                    <li><a href="pharma.html">Питание</a></li>
-                    <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Добро пожаловать в Ring Boxing Club</h1>
-                <p>Официальный поставщик спортивного снаряжения</p>
-                <a href="shop.html" class="btn">Открыть магазин</a>
-            </div>
-        </section>
-        <section class="products-preview">
-            <div class="container">
-                <h2>Новые товары</h2>
-                <div class="products-grid" id="featured-products"></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+
+<a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+
+<header role="banner">
+    <div class="nav">
+        <a href="index.html" class="logo" itemscope itemtype="https://schema.org/SportsOrganization">
+            <span itemprop="name">RING</span> BOXING CLUB
+        </a>
+        <div class="hamburger" aria-label="Меню" role="button" aria-expanded="false">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </footer>
-    <script src="js/main.js"></script>
+        <nav class="menu" role="navigation" aria-label="Основное меню">
+            <a href="index.html" aria-current="page">Главная</a>
+            <a href="#about">О проекте</a>
+            
+            <div class="menu-item-has-children">
+                <a href="shop.html">Магазин</a>
+                <div class="sub-menu">
+                    <a href="equipment.html">🥊 Экипировка</a>
+                    <a href="cosmetic.html">🧴 Косметика</a>
+                    <a href="pharma.html">💊 Аптека</a>
+                </div>
+            </div>
+            
+            <a href="https://rutube.ru/channel/23770571/" target="_blank">Видео</a>
+            <a href="https://dzen.ru/ring_boxin_club?share_to=link" target="_blank">Блог</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <a href="cart.html" class="cart-btn" aria-label="Корзина">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 6h2l.4 2M7 13h9l1.5-6h-13L7 13zM7 17a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm8 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" 
+                      stroke="#C8B273" 
+                      stroke-width="1.7" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round"/>
+            </svg>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+</header>
+
+<main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero" role="banner" aria-labelledby="main-heading">
+        <div class="hero-inner">
+            <h1 id="main-heading">Боксёрский крипто-медиа проект RING BOXING CLUB</h1>
+            <p>Твой стиль Бокса!<br>
+            Сегодня бокс — это не только совершенное единоборство,но и крутые фото, хайповые ролики и уверенность в каждом движении.<br>
+            Бокс прокачивает не только тело, но и образ на 100%.</p>
+            <div class="cta-bar">
+                <a href="shop.html" class="btn-gold">Магазин</a>
+                <a href="#about" class="btn-silver">О проекте</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-compact" aria-labelledby="about-heading">
+        <div class="section-header">
+            <div class="section-badge">Премиум клуб</div>
+            <h2 id="about-heading" class="section-title">RING BOXING CLUB</h2>
+            <p class="section-subtitle">Индивидуальные тренировки по боксу с авторской техникой для достижения максимальных результатов</p>
+        </div>
+        
+        <div class="grid grid-3">
+            <div class="card">
+                <div class="card-icon">🥊</div>
+                <h3 class="card-title">Авторская техника</h3>
+                <p class="card-text">Уникальная методика тренировок, сочетающая классику и современные подходы</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">💎</div>
+                <h3 class="card-title">Премиум подход</h3>
+                <p class="card-text">Индивидуальные занятия с профессиональными тренерами высшего уровня</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3 class="card-title">Быстрый результат</h3>
+                <p class="card-text">Заметный прогресс уже после первых тренировок благодаря персональному подходу</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services section" aria-labelledby="services-heading">
+        <div class="section-header">
+            <h2 id="services-heading">Наши услуги</h2>
+            <p class="section-subtitle">Полный спектр боксерской подготовки</p>
+        </div>
+        <div class="grid grid-4">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3 class="card-title">Индивидуальные тренировки</h3>
+                <p class="card-text">Персональный подход с профессиональными тренерами. Авторская методика, проверенная на чемпионах.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">Групповые занятия</h3>
+                <p class="card-text">Интенсивные тренировки в коллективе. Мотивация от других боксеров и дух соперничества.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🥊</div>
+                <h3 class="card-title">Спарринг-клуб</h3>
+                <p class="card-text">Тренировочные поединки под надзором опытных тренеров. Отработка техники в боевых условиях.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3 class="card-title">Обучающие курсы</h3>
+                <p class="card-text">Видеокурсы от элиты: техника, тактика, подготовка к боям, психология победы.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="products section" aria-labelledby="products-heading">
+        <div class="section-header">
+            <h2 id="products-heading">Популярные товары</h2>
+            <p class="section-subtitle">Лучшая экипировка от ведущих брендов</p>
+        </div>
+        <div class="grid grid-4">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="equipment">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23222224' width='100' height='100'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23C8B273' font-size='24' font-family='Arial'%3E🥊%3C/text%3E%3C/svg%3E" 
+                         alt="Боксерские перчатки Pro Fight" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <h3>Pro Fight Gloves 12oz</h3>
+                <p class="desc">Профессиональные боксерские перчатки для тренировок</p>
+                <div class="price">8,500₽</div>
+                <button class="add-to-cart" data-product="Pro Fight Gloves 12oz" data-price="8500" data-category="equipment">
+                    <span>🛒</span> В корзину
+                </button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="equipment">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23222224' width='100' height='100'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23C8B273' font-size='24' font-family='Arial'%3E⛑️%3C/text%3E%3C/svg%3E" 
+                         alt="Боксерский шлем Pro Guard" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <h3>Pro Guard Helmet</h3>
+                <p class="desc">Профессиональный боксерский шлем с защитой</p>
+                <div class="price">6,200₽</div>
+                <button class="add-to-cart" data-product="Pro Guard Helmet" data-price="6200" data-category="equipment">
+                    <span>🛒</span> В корзину
+                </button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="cosmetic">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23222224' width='100' height='100'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%238B5FBF' font-size='24' font-family='Arial'%3E🧴%3C/text%3E%3C/svg%3E" 
+                         alt="Спортивный бальзам Muscle Relief" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <h3>Muscle Relief Balm</h3>
+                <p class="desc">Охлаждающий бальзам для восстановления мышц</p>
+                <div class="price">1,800₽</div>
+                <button class="add-to-cart" data-product="Muscle Relief Balm" data-price="1800" data-category="cosmetic">
+                    <span>🛒</span> В корзину
+                </button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="pharma">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23222224' width='100' height='100'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%234CAF50' font-size='24' font-family='Arial'%3E💪%3C/text%3E%3C/svg%3E" 
+                         alt="Протеиновый комплекс Whey Gold" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <h3>Whey Gold Protein</h3>
+                <p class="desc">Премиальный сывороточный протеин 2кг</p>
+                <div class="price">4,500₽</div>
+                <button class="add-to-cart" data-product="Whey Gold Protein" data-price="4500" data-category="pharma">
+                    <span>🛒</span> В корзину
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS SECTION -->
+    <section id="videos" class="videos section" aria-labelledby="videos-heading">
+        <div class="section-header">
+            <h2 id="videos-heading">Видео канал</h2>
+            <p class="section-subtitle">Обучение, мотивация, анализ боев</p>
+        </div>
+        <div class="grid grid-3">
+            <div class="video-card gold">
+                <div class="preview">
+                    <iframe data-src="https://rutube.ru/play/embed/33e490aab1cb92981cef5239eda24060/" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            title="Документальный фильм о боксе">
+                    </iframe>
+                </div>
+                <h3>Документальный фильм</h3>
+                <p>Легенды ринга: истории чемпионов, их путь к вершине и уроки для новичков</p>
+                <a href="https://rutube.ru/shorts/33e490aab1cb92981cef5239eda24060/" class="btn-gold">Смотреть</a>
+            </div>
+            <div class="video-card silver">
+                <div class="preview">
+                    <iframe data-src="https://rutube.ru/play/embed/731948229421945ec1901d78f9cfb2c5/" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            title="Упражнения для бокса">
+                    </iframe>
+                </div>
+                <h3>Лучшие упражнения</h3>
+                <p>Подробные тренировочные программы для подготовки к боям и развития силы</p>
+                <a href="https://rutube.ru/shorts/731948229421945ec1901d78f9cfb2c5/" class="btn-silver">Смотреть</a>
+            </div>
+            <div class="video-card gold">
+                <div class="preview">
+                    <iframe data-src="https://rutube.ru/play/embed/aea504766d88b47ecb8c0187377b582e/" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            title="Советы тренера">
+                    </iframe>
+                </div>
+                <h3>Советы тренера элиты</h3>
+                <p>Профессиональные рекомендации от чемпионов: техника, стратегия, психологическая подготовка</p>
+                <a href="https://rutube.ru/shorts/aea504766d88b47ecb8c0187377b582e/" class="btn-gold">Смотреть</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPMENT SECTION -->
+    <section id="equipment" class="equipment section" aria-labelledby="equipment-heading">
+        <div class="section-header">
+            <h2 id="equipment-heading">Premium экипировка Gold & Silver</h2>
+            <p class="section-subtitle">Профессиональный инвентарь для чемпионов</p>
+        </div>
+        <div class="grid grid-4">
+            <div class="equipment-card">
+                <div class="equip-icon">🥊</div>
+                <h3>Боксерские перчатки</h3>
+                <ul class="equip-list">
+                    <li>Золотые металлизированные</li>
+                    <li>Максимальная защита</li>
+                    <li>Профессиональное качество</li>
+                </ul>
+                <span class="price-tag gold">от 3500₽</span>
+            </div>
+            <div class="equipment-card">
+                <div class="equip-icon">🎖️</div>
+                <h3>Шлемы и защита</h3>
+                <ul class="equip-list">
+                    <li>Серебристое покрытие</li>
+                    <li>Улучшенная вентиляция</li>
+                    <li>Премиум комфорт</li>
+                </ul>
+                <span class="price-tag silver">от 2800₽</span>
+            </div>
+            <div class="equipment-card">
+                <div class="equip-icon">🧤</div>
+                <h3>Боксерские бинты</h3>
+                <ul class="equip-list">
+                    <li>Эластичные материалы</li>
+                    <li>Длительный срок службы</li>
+                    <li>Профессиональный стандарт</li>
+                </ul>
+                <span class="price-tag gold">от 890₽</span>
+            </div>
+            <div class="equipment-card">
+                <div class="equip-icon">👟</div>
+                <h3>Боксерские туфли</h3>
+                <ul class="equip-list">
+                    <li>Легкие и маневренные</li>
+                    <li>Максимальное сцепление</li>
+                    <li>Дышащие материалы</li>
+                </ul>
+                <span class="price-tag silver">от 4200₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section id="blog" class="blog section" aria-labelledby="blog-heading">
+        <div class="section-header">
+            <h2 id="blog-heading">Блог и статьи</h2>
+            <p class="section-subtitle">Советы, анализ и вдохновляющие истории</p>
+        </div>
+        <div class="grid grid-2">
+            <article class="blog-card">
+                <div class="blog-date">18 ноября</div>
+                <h3>7 правил жизни от Майка Тайсона</h3>
+                <p>Как легенда бокса применяет боксерскую философию к повседневной жизни. Уроки дисциплины, упорства и мастерства.</p>
+                <div class="blog-meta">
+                    <span class="category gold">Мотивация</span>
+                    <a href="#" class="read-more">Читать →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-date">15 ноября</div>
+                <h3>Авторский подход к тренировкам</h3>
+                <p>Как мы разработали уникальную методику, объединяющую классику бокса с современными спортивными технологиями.</p>
+                <div class="blog-meta">
+                    <span class="category silver">Методика</span>
+                    <a href="#" class="read-more">Читать →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-date">12 ноября</div>
+                <h3>Премиум тренды для элиты</h3>
+                <p>Как правильно выбирать экипировку, какие материалы лучше, и почему качество влияет на результаты в боксе.</p>
+                <div class="blog-meta">
+                    <span class="category gold">Экипировка</span>
+                    <a href="#" class="read-more">Читать →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-date">10 ноября</div>
+                <h3>От новичка к чемпиону</h3>
+                <p>История успеха наших воспитанников: как они достигали целей, преодолевали сложности и побеждали.</p>
+                <div class="blog-meta">
+                    <span class="category silver">Истории</span>
+                    <a href="#" class="read-more">Читать →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials section" aria-labelledby="testimonials-heading">
+        <div class="section-header">
+            <h2 id="testimonials-heading">Отзывы боксеров</h2>
+            <p class="section-subtitle">Реальные истории от наших клиентов</p>
+        </div>
+        <div class="grid grid-3">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Благодаря методике RING BOXING CLUB я за 3 месяца достиг результатов, которых не мог получить за год тренировок в других клубах. Тренеры просто профессионалы!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar gold">АЛ</div>
+                    <div class="author-info">
+                        <strong>Алексей Лавренко</strong>
+                        <span>Любитель, средняя категория</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Экипировка Gold & Silver — это не просто инвентарь, это искусство. Качество, дизайн, удобство — всё на высшем уровне. Тренируюсь с удовольствием!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar silver">МП</div>
+                    <div class="author-info">
+                        <strong>Мария Петрова</strong>
+                        <span>Профессиональная боксёрша</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Спарринг-клуб RING — это семья. Атмосфера, поддержка команды, профессионализм — всё это вместе дало мне уверенность и новые навыки."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar gold">ДС</div>
+                    <div class="author-info">
+                        <strong>Дмитрий Степанов</strong>
+                        <span>Кандидат в мастера спорта</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS SECTION -->
+    <section id="contacts" class="contacts section" aria-labelledby="contacts-heading">
+        <div class="section-header">
+            <h2 id="contacts-heading">Свяжитесь с нами</h2>
+            <p class="section-subtitle">Мы готовы ответить на все ваши вопросы</p>
+        </div>
+        <div class="grid">
+            <div class="contacts-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Адрес</strong>
+                            <p>Пенза, ул. Спортивная, 18<br>Боксерский клуб "RING BOXING CLUB"</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Телефон</strong>
+                            <p><a href="tel:+79533584372">+7 (953) 358-43-72</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💬</span>
+                        <div>
+                            <strong>Социальные сети</strong>
+                            <div class="social-links">
+                                <a href="#" class="social-link">Telegram</a>
+                                <a href="#" class="social-link">YouTube</a>
+                                <a href="#" class="social-link">RuTube</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-section">
+                    <h3>Готовы начать?</h3>
+                    <p>Запишитесь на первую тренировку и получите консультацию от профессионального тренера</p>
+                    <div class="cta-buttons">
+                        <a href="tel:+79533584372" class="btn-gold">Позвонить</a>
+                        <a href="#" class="btn-silver">Оставить заявку</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>Магазин</h4>
+            <ul>
+                <li><a href="equipment.html">🥊 Боксерская экипировка</a></li>
+                <li><a href="cosmetic.html">🧴 Спортивная косметика</a></li>
+                <li><a href="pharma.html">💊 Спортивная фармакология</a></li>
+                <li><a href="shop.html#new">🆕 Новинки</a></li>
+                <li><a href="shop.html#sale">💥 Акции</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Помощь покупателю</h4>
+            <ul>
+                <li><a href="#">📦 Доставка и оплата</a></li>
+                <li><a href="#">🔄 Возврат и обмен</a></li>
+                <li><a href="#">✅ Гарантия качества</a></li>
+                <li><a href="#">📏 Таблица размеров</a></li>
+                <li><a href="#">❓ Частые вопросы</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <ul>
+                <li>📍 г. Пенза, ул. Спортивная, 18</li>
+                <li><a href="tel:+79533584372">📞 +7 (953) 358-43-72</a></li>
+                <li><a href="mailto:shop@ringboxingclub.ru">✉️ shop@ringboxingclub.ru</a></li>
+                <li>🕒 Ежедневно 10:00-20:00</li>
+                <li>👨‍💼 Консультации: 11:00-19:00</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>О компании</h4>
+            <ul>
+                <li><a href="index.html#about">🏢 О проекте</a></li>
+                <li><a href="#">📝 Блог о боксе</a></li>
+                <li><a href="#">⭐ Отзывы</a></li>
+                <li><a href="#">🤝 Сотрудничество</a></li>
+                <li><a href="#">📄 Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="index.html#about">ℹ️ О проекте</a>
+        <a href="shop.html">🛍️ Магазин</a>
+        <a href="https://rutube.ru/channel/23770571/" target="_blank">🎥 Видео</a>
+        <a href="https://dzen.ru/ring_boxin_club" target="_blank">📰 Блог</a>
+        <a href="index.html#contacts">📞 Контакты</a>
+    </div>
+    
+    <div class="footer-bottom">
+        <div itemscope itemtype="https://schema.org/SportsActivityLocation">
+            <p>
+                © 2025 RING BOXING CLUB — Магазин профессиональной боксерской экипировки<br>
+                <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="addressLocality">г. Пенза</span>, 
+                    <span itemprop="streetAddress">ул. Спортивная, 18</span>
+                </span><br>
+                📞 Тел: <span itemprop="telephone">+7 (953) 358-43-72</span> | 
+                ✉️ Email: <span itemprop="email">shop@ringboxingclub.ru</span>
+            </p>
+            <p style="color: var(--gold-metal); font-size: 14px; margin-top: 10px;">
+                💪 Профессиональная экипировка для настоящих чемпионов
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Улучшенная корзина для главной страницы
+class ShoppingCart {
+    constructor() {
+        this.items = [];
+        this.init();
+    }
+    
+    init() {
+        this.loadFromStorage();
+        this.updateCartUI();
+        this.bindEvents();
+        this.setupLazyLoading();
+        this.setupVideoLoading();
+    }
+    
+    bindEvents() {
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => this.addToCart(e));
+        });
+    }
+    
+    addToCart(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const button = event.target.closest('.add-to-cart');
+        if (!button) return;
+        
+        const productName = button.dataset.product;
+        const productPrice = parseInt(button.dataset.price);
+        const productCategory = button.dataset.category;
+        
+        const product = {
+            id: Date.now() + Math.random(),
+            name: productName,
+            price: productPrice,
+            quantity: 1,
+            category: productCategory
+        };
+        
+        this.saveToCategory(product);
+        this.updateCartUI();
+        this.showAddToCartAnimation(button);
+    }
+    
+    saveToCategory(product) {
+        const category = this.getCategoryType(product.category);
+        const storageKey = this.getStorageKey(category);
+        
+        const existingItems = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        
+        const existingItemIndex = existingItems.findIndex(item => 
+            item.name === product.name && item.price === product.price
+        );
+        
+        if (existingItemIndex > -1) {
+            existingItems[existingItemIndex].quantity += 1;
+        } else {
+            existingItems.push(product);
+        }
+        
+        localStorage.setItem(storageKey, JSON.stringify(existingItems));
+        this.loadFromStorage();
+    }
+    
+    getCategoryType(category) {
+        if (category === 'equipment') return 'equipment';
+        if (category === 'cosmetic') return 'cosmetic'; 
+        if (category === 'pharma') return 'pharma';
+        return 'equipment';
+    }
+    
+    getStorageKey(categoryType) {
+        const keys = {
+            'equipment': 'ringBoxingCart',
+            'cosmetic': 'ringCosmeticCart', 
+            'pharma': 'ringPharmaCart'
+        };
+        return keys[categoryType] || 'ringBoxingCart';
+    }
+    
+    loadFromStorage() {
+        try {
+            const equipmentCart = JSON.parse(localStorage.getItem('ringBoxingCart') || '[]');
+            const cosmeticCart = JSON.parse(localStorage.getItem('ringCosmeticCart') || '[]');
+            const pharmaCart = JSON.parse(localStorage.getItem('ringPharmaCart') || '[]');
+            
+            this.items = [...equipmentCart, ...cosmeticCart, ...pharmaCart];
+        } catch (e) {
+            console.error('Ошибка загрузки корзины:', e);
+            this.items = [];
+        }
+    }
+    
+    updateCartUI() {
+        const count = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCount = document.querySelector('.cart-count');
+        
+        if (count > 0) {
+            cartCount.textContent = count;
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
+    }
+    
+    showAddToCartAnimation(button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<span>✅</span> Добавлено!';
+        button.disabled = true;
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }, 2000);
+    }
+
+    setupLazyLoading() {
+        const lazyImages = document.querySelectorAll('.lazy');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('lazy-loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+            lazyImages.forEach(img => img.classList.add('lazy-loaded'));
+        }
+    }
+
+    setupVideoLoading() {
+        const iframes = document.querySelectorAll('.video-card .preview iframe');
+
+        iframes.forEach(iframe => {
+            if (!iframe.dataset.src && iframe.getAttribute('src')) {
+                iframe.dataset.src = iframe.getAttribute('src');
+                iframe.removeAttribute('src');
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const iframe = entry.target;
+                const visibleEnough = entry.intersectionRatio >= 0.5;
+
+                if (visibleEnough) {
+                    if (!iframe.getAttribute('src') && iframe.dataset.src) {
+                        iframe.setAttribute('src', iframe.dataset.src);
+                    }
+                } else {
+                    if (iframe.getAttribute('src')) {
+                        iframe.setAttribute('src', '');
+                    }
+                }
+            });
+        }, {
+            threshold: [0, 0.5]
+        });
+
+        iframes.forEach(iframe => observer.observe(iframe));
+    }
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    const cart = new ShoppingCart();
+    
+    // Навигационное меню для мобильных устройств
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', menu.classList.contains('active'));
+        });
+    }
+    
+    const menuLinks = document.querySelectorAll('.menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (menu) menu.classList.remove('active');
+            if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // Плавная прокрутка для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// Глобальный обработчик ошибок
+window.addEventListener('error', (e) => {
+    console.error('Shop Error:', e.error);
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "RING BOXING CLUB",
+  "description": "Премиальный боксерский клуб с экипировкой Gold & Silver. Профессиональные тренировки, авторские курсы и элитная экипировка.",
+  "url": "https://ringboxingclub.ru",
+  "logo": "https://ringboxingclub.ru/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Спортивная, 18",
+    "addressLocality": "Пенза",
+    "addressCountry": "RU"
+  },
+  "telephone": "+7 (953) 358-43-72",
+  "email": "shop@ringboxingclub.ru",
+  "sameAs": [
+    "https://rutube.ru/channel/23770571/",
+    "https://dzen.ru/ring_boxin_club",
+    "https://t.me/ring_boxing_club",
+    "https://youtube.com/@club-ring"
+  ]
+}
+</script>
+
 </body>
 </html>
