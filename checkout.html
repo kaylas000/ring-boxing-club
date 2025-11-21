@@ -3,49 +3,846 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оформление заказа - Ring Boxing Club</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="RING BOXING CLUB - Оформление заказа. Завершите покупку спортивной экипировки, косметики и фармакологии.">
+    <meta name="keywords" content="оформление заказа, доставка, оплата, боксерская экипировка, спортивная косметика">
+    <meta name="author" content="RING BOXING CLUB">
+    <title>Оформление заказа RING BOXING CLUB – Завершение покупки</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #151516;
+            --black2: #222224;
+            --gold-metal: #C8B273;
+            --gold-bright: #92742e;
+            --silver-metal: #BFC7C7;
+            --silver-bright: #989fa1;
+            --success-green: #4CAF50;
+            --error-red: #f44336;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--black);
+            color: #ECECEC;
+            margin: 0;
+            padding-top: 70px;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--black2);
+            padding: 12px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1300px; 
+            margin: auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            color: var(--gold-metal);
+            font-weight: 900;
+            text-decoration: none;
+        }
+        
+        .menu {
+            display: flex;
+        }
+        
+        .menu a {
+            color: #ECECEC;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 800;
+        }
+
+        .cart-btn {
+            background: var(--black2);
+            border: 2px solid var(--gold-metal);
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--gold-bright);
+            color: #181710;
+            border-radius: 50%;
+            font-size: 0.7em;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        /* ===== CHECKOUT CONTENT ===== */
+        .checkout-content {
+            padding: 60px 0;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* ===== CHECKOUT STEPS ===== */
+        .checkout-steps {
+            margin-bottom: 40px;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--black2);
+            border: 2px solid var(--silver-metal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--silver-metal);
+        }
+
+        .step.active .step-number {
+            background: var(--gold-metal);
+            border-color: var(--gold-metal);
+            color: var(--black);
+        }
+
+        .step-label {
+            color: var(--silver-metal);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .step.active .step-label {
+            color: var(--gold-metal);
+        }
+
+        /* ===== CHECKOUT FORMS ===== */
+        .checkout-forms {
+            background: var(--black2);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid var(--gold-metal);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            color: var(--gold-metal);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--silver-metal);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--silver-metal);
+            border-radius: 8px;
+            background: var(--black);
+            color: var(--silver-metal);
+            font-size: 1rem;
+        }
+
+        .delivery-method, .payment-method {
+            border: 2px solid var(--silver-metal);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .delivery-method.selected, .payment-method.selected {
+            border-color: var(--gold-metal);
+            background: rgba(200, 178, 115, 0.05);
+        }
+
+        .method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .method-name {
+            color: var(--gold-metal);
+            font-weight: 600;
+        }
+
+        /* ===== ORDER SUMMARY ===== */
+        .order-summary {
+            background: var(--black2);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid var(--gold-metal);
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            color: var(--gold-metal);
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .summary-items {
+            margin-bottom: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(200, 178, 115, 0.1);
+        }
+
+        .summary-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-item-details {
+            flex: 1;
+        }
+
+        .summary-item-name {
+            color: var(--silver-metal);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .summary-item-price {
+            color: var(--gold-metal);
+            font-weight: 600;
+        }
+
+        .summary-details {
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .summary-label {
+            color: var(--silver-metal);
+        }
+
+        .summary-value {
+            color: var(--silver-metal);
+            font-weight: 600;
+        }
+
+        .summary-total {
+            font-size: 1.3rem;
+            color: var(--gold-metal);
+            font-weight: 700;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: var(--gold-metal);
+            border: none;
+            color: var(--black);
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+        @media (max-width: 1024px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+            
+            header {
+                height: 60px;
+            }
+            
+            .nav {
+                padding: 0 10px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .checkout-content {
+                padding: 40px 0;
+            }
+            
+            .checkout-container {
+                padding: 0 15px;
+                gap: 25px;
+            }
+            
+            .checkout-forms, .order-summary {
+                padding: 20px;
+            }
+            
+            .steps-container {
+                gap: 20px;
+            }
+            
+            .step-label {
+                font-size: 0.8rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .checkout-btn {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .summary-item {
+                gap: 10px;
+            }
+            
+            .summary-item-image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 22px;
+            height: 2.5px;
+            background: var(--gold-metal);
+            margin: 4px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background: var(--black2);
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                margin: 0;
+                padding: 12px 15px;
+                border-bottom: 1px solid rgba(200, 178, 115, 0.2);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo"><a href="index.html">Клуб RING</a></div>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section class="checkout">
-            <div class="container">
-                <h1>Оформление заказа</h1>
-                <form id="checkout-form">
-                    <div class="form-group">
-                        <label>Имя:</label>
-                        <input type="text" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Почта:</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Телефон:</label>
-                        <input type="tel" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Адрес:</label>
-                        <textarea name="address" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ring Boxing Club</p>
+
+<header>
+    <div class="nav">
+        <a href="index.html" class="logo">RING BOXING CLUB</a>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/checkout.js"></script>
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Магазин</a>
+            <a href="cart.html">Корзина</a>
+            <a href="checkout.html" aria-current="page">Оформление</a>
+        </nav>
+        <a href="cart.html" class="cart-btn">
+            <span>🛒</span>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="checkout-content">
+        <div class="checkout-container">
+            <div class="checkout-forms">
+                <div class="checkout-steps">
+                    <div class="steps-container">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Данные</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Доставка</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Оплата</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Customer Information -->
+                <div class="form-section active" id="step-1">
+                    <h3 class="form-title">Контактная информация</h3>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Имя</label>
+                            <input type="text" class="form-input" id="firstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Фамилия</label>
+                            <input type="text" class="form-input" id="lastName" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="email" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Телефон</label>
+                            <input type="tel" class="form-input" id="phone" required>
+                        </div>
+                    </div>
+
+                    <button class="checkout-btn" onclick="checkout.nextStep(1)">
+                        Продолжить
+                    </button>
+                </div>
+
+                <!-- Step 2: Delivery Information -->
+                <div class="form-section" id="step-2">
+                    <h3 class="form-title">Способ доставки</h3>
+                    
+                    <div class="delivery-method selected" data-method="courier">
+                        <div class="method-header">
+                            <div class="method-name">Курьерская доставка</div>
+                            <div class="method-price">300₽</div>
+                        </div>
+                        <div>Доставка курьером на следующий день</div>
+                    </div>
+                    
+                    <div class="delivery-method" data-method="pickup">
+                        <div class="method-header">
+                            <div class="method-name">Самовывоз</div>
+                            <div class="method-price">Бесплатно</div>
+                        </div>
+                        <div>г. Пенза, ул. Спортивная, 18</div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="checkout-btn" onclick="checkout.prevStep(2)" style="background: var(--black2); color: var(--gold-metal); border: 2px solid var(--gold-metal);">
+                            Назад
+                        </button>
+                        <button class="checkout-btn" onclick="checkout.nextStep(2)">
+                            Продолжить
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment Information -->
+                <div class="form-section" id="step-3">
+                    <h3 class="form-title">Способ оплаты</h3>
+                    
+                    <div class="payment-method selected" data-method="card">
+                        <div class="method-name">Банковская карта</div>
+                        <div>Visa, Mastercard, Мир</div>
+                    </div>
+                    
+                    <div class="payment-method" data-method="cash">
+                        <div class="method-name">Наличными</div>
+                        <div>Оплата при получении</div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="checkout-btn" onclick="checkout.prevStep(3)" style="background: var(--black2); color: var(--gold-metal); border: 2px solid var(--gold-metal);">
+                            Назад
+                        </button>
+                        <button class="checkout-btn" onclick="checkout.submitOrder()">
+                            Подтвердить заказ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3 class="summary-title">Ваш заказ</h3>
+                
+                <div class="summary-items" id="orderItems">
+                    <!-- Товары будут загружены динамически -->
+                </div>
+
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span class="summary-label">Товары</span>
+                        <span class="summary-value" id="summarySubtotal">0₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Доставка</span>
+                        <span class="summary-value" id="summaryShipping">0₽</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span class="summary-label">Итого</span>
+                        <span class="summary-value" id="summaryTotal">0₽</span>
+                    </div>
+                </div>
+
+                <button class="checkout-btn" onclick="window.location.href='cart.html'">
+                    Вернуться в корзину
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+// Простая система оформления заказа
+class CheckoutSystem {
+    constructor() {
+        this.currentStep = 1;
+        this.orderData = {};
+        this.init();
+    }
+
+    init() {
+        this.loadOrderData();
+        this.updateOrderSummary();
+        this.bindEvents();
+        this.updateHeaderCart();
+    }
+
+    loadOrderData() {
+        const checkoutData = JSON.parse(localStorage.getItem('checkoutData') || '{}');
+        if (!checkoutData.items || checkoutData.items.length === 0) {
+            alert('Корзина пуста!');
+            window.location.href = 'cart.html';
+            return;
+        }
+        this.orderData = checkoutData;
+    }
+
+    bindEvents() {
+        // Выбор способа доставки
+        document.querySelectorAll('.delivery-method').forEach(method => {
+            method.addEventListener('click', () => this.selectDeliveryMethod(method));
+        });
+
+        // Выбор способа оплаты
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => this.selectPaymentMethod(method));
+        });
+    }
+
+    nextStep(currentStep) {
+        if (!this.validateStep(currentStep)) return;
+        
+        this.saveStepData(currentStep);
+        this.hideStep(currentStep);
+        this.currentStep = currentStep + 1;
+        this.showStep(this.currentStep);
+        this.updateSteps();
+    }
+
+    prevStep(currentStep) {
+        this.hideStep(currentStep);
+        this.currentStep = currentStep - 1;
+        this.showStep(this.currentStep);
+        this.updateSteps();
+    }
+
+    hideStep(step) {
+        document.getElementById(`step-${step}`).classList.remove('active');
+    }
+
+    showStep(step) {
+        document.getElementById(`step-${step}`).classList.add('active');
+    }
+
+    updateSteps() {
+        document.querySelectorAll('.step').forEach((step, index) => {
+            const stepNumber = parseInt(step.dataset.step);
+            step.classList.remove('active');
+            
+            if (stepNumber === this.currentStep) {
+                step.classList.add('active');
+            }
+        });
+    }
+
+    validateStep(step) {
+        if (step === 1) {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (!firstName || !lastName || !email || !phone) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    saveStepData(step) {
+        if (step === 1) {
+            this.orderData.customer = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+        }
+    }
+
+    selectDeliveryMethod(method) {
+        document.querySelectorAll('.delivery-method').forEach(m => m.classList.remove('selected'));
+        method.classList.add('selected');
+    }
+
+    selectPaymentMethod(method) {
+        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+        method.classList.add('selected');
+    }
+
+    updateOrderSummary() {
+        const container = document.getElementById('orderItems');
+        const items = this.orderData.items || [];
+        
+        container.innerHTML = items.map(item => `
+            <div class="summary-item">
+                <div class="summary-item-image">
+                    <span>${this.getCategoryIcon(item.category)}</span>
+                </div>
+                <div class="summary-item-details">
+                    <div class="summary-item-name">${item.name}</div>
+                    <div>${item.quantity} × ${this.formatPrice(item.price)}</div>
+                </div>
+                <div class="summary-item-price">${this.formatPrice(item.price * item.quantity)}</div>
+            </div>
+        `).join('');
+
+        const subtotal = this.orderData.totals?.subtotal || 0;
+        const shipping = this.orderData.totals?.shipping || 0;
+        const total = this.orderData.totals?.total || 0;
+
+        document.getElementById('summarySubtotal').textContent = this.formatPrice(subtotal);
+        document.getElementById('summaryShipping').textContent = shipping === 0 ? 'Бесплатно' : this.formatPrice(shipping);
+        document.getElementById('summaryTotal').textContent = this.formatPrice(total);
+    }
+
+    getCategoryIcon(category) {
+        const icons = {
+            'equipment': '🥊',
+            'cosmetic': '🧴', 
+            'pharma': '💊'
+        };
+        return icons[category] || '📦';
+    }
+
+    formatPrice(price) {
+        return new Intl.NumberFormat('ru-RU', {
+            style: 'currency',
+            currency: 'RUB',
+            minimumFractionDigits: 0
+        }).format(price);
+    }
+
+    updateHeaderCart() {
+        const items = this.orderData.items || [];
+        const count = items.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCount = document.querySelector('.cart-count');
+        
+        if (count > 0) {
+            cartCount.textContent = count;
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
+    }
+
+    submitOrder() {
+        // Сохраняем данные третьего шага
+        const selectedDelivery = document.querySelector('.delivery-method.selected');
+        const selectedPayment = document.querySelector('.payment-method.selected');
+        
+        this.orderData.delivery = {
+            method: selectedDelivery?.dataset.method
+        };
+        this.orderData.payment = {
+            method: selectedPayment?.dataset.method
+        };
+
+        // Генерируем номер заказа
+        const orderNumber = 'RING-' + Date.now().toString().substring(7);
+        
+        // Сохраняем заказ
+        const order = {
+            number: orderNumber,
+            ...this.orderData,
+            date: new Date().toISOString()
+        };
+        
+        localStorage.setItem('lastOrder', JSON.stringify(order));
+        
+        // Очищаем корзину
+        localStorage.removeItem('ringBoxingCart');
+        localStorage.removeItem('ringCosmeticCart');
+        localStorage.removeItem('ringPharmaCart');
+        localStorage.removeItem('checkoutData');
+        
+        // Показываем успешное сообщение
+        alert(`Заказ №${orderNumber} успешно оформлен!\n\nСпасибо за ваш заказ! Мы свяжемся с вами для подтверждения.`);
+        
+        // Переходим на главную
+        window.location.href = 'index.html';
+    }
+}
+
+// Инициализация системы оформления
+const checkout = new CheckoutSystem();
+
+// Мобильное меню
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+    }
+});
+</script>
+
 </body>
 </html>
