@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Снаряжение - Ring Boxing Club</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo"><a href="index.html">Клуб RING</a></div>
+                <ul class="menu">
+                    <li><a href="shop.html">Каталог</a></li>
+                    <li><a href="equipment.html" class="active">Снаряжение</a></li>
+                    <li><a href="cosmetic.html">Косметика</a></li>
+                    <li><a href="pharma.html">Питание</a></li>
+                    <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="category">
+            <div class="container">
+                <h1>Снаряжение для бокса и MMA</h1>
+                <p class="category-desc">Профессиональное снаряжение для тренировок</p>
+                <div class="category-filters">
+                    <input type="text" id="search" placeholder="Поиск...">
+                    <select id="sort">
+                        <option value="name">По наименованию</option>
+                        <option value="price-asc">По цене (возрастающая)</option>
+                        <option value="price-desc">По цене (убывающая)</option>
+                    </select>
+                </div>
+                <div class="products-grid" id="products-equipment"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html>
