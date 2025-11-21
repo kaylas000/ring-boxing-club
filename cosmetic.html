@@ -3,48 +3,2726 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Косметика - Ring Boxing Club</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="RING BOXING CLUB - спортивная косметика для профессиональных спортсменов. Уход за кожей до и после тренировок.">
+    <meta name="keywords" content="спортивная косметика, уход за кожей, восстановление после тренировок, гигиена спортсмена, мужская косметика">
+    <meta name="author" content="RING BOXING CLUB">
+    <title>Спортивная косметика RING BOXING CLUB – Уход для чемпионов</title>
+    
+    <!-- PWA и производительность -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#8B5FBF">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧴</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Оптимизация анимаций */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        :root {
+            --black: #151516;
+            --black2: #222224;
+            --gold-metal: #C8B273;
+            --gold-bright: #92742e;
+            --silver-metal: #BFC7C7;
+            --silver-bright: #989fa1;
+            --cosmetic-purple: #8B5FBF;
+            --cosmetic-lavender: #9D7AD6;
+            --cosmetic-violet: #6A4C9C;
+            --cosmetic-pink: #D67AB9;
+            --cosmetic-mint: #7AD6B9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Оптимизация шрифтов */
+        @font-face {
+            font-family: 'Montserrat';
+            font-display: swap;
+            src: local('Montserrat');
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--black);
+            color: #ECECEC;
+            margin: 0;
+            padding-top: 70px;
+            line-height: 1.6;
+        }
+
+        /* Оптимизация изображений */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy-loaded {
+            opacity: 1;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--gold-metal);
+            color: var(--black);
+            padding: 8px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: var(--black2);
+            padding: 12px 0;
+            box-shadow: 0 2px 22px #000c;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1300px; 
+            margin: auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+            height: 46px;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            color: var(--gold-metal);
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 0 1px 15px #a49051cc, 0 2px 8px #fff5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .logo:hover {
+            color: #E8CE86;
+            text-shadow: 0 1px 20px #C8B273cc, 0 2px 12px #fff7;
+            transform: scale(1.05);
+        }
+        
+        .logo span {
+            color: var(--silver-metal); 
+            text-shadow: 0 1px 9px #ECECEC88;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover span {
+            color: #ECECEC;
+            text-shadow: 0 1px 12px #ECECECcc;
+        }
+        
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .menu a {
+            color: #ECECEC;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 800;
+            transition: .2s;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .menu a:hover {
+            color: var(--cosmetic-purple);
+            text-shadow: 0 1px 10px #8B5FBF88;
+        }
+
+        .menu-item-has-children {
+            position: relative;
+        }
+
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--black2);
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--cosmetic-purple);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sub-menu a {
+            display: block;
+            padding: 12px 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(139, 95, 191, 0.1);
+            font-size: 0.9rem;
+            color: var(--silver-metal);
+        }
+
+        .sub-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .sub-menu a:hover {
+            background: rgba(139, 95, 191, 0.1);
+            color: var(--cosmetic-purple);
+        }
+
+        .menu-item-has-children:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sub-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--cosmetic-purple);
+        }
+
+        .cart-btn {
+            background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+            border: 2px solid var(--cosmetic-purple);
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            box-shadow: 0 3px 14px #8B5FBF11;
+            cursor: pointer;
+            transition: box-shadow .19s, background .2s, transform .11s;
+            position: relative;
+        }
+        
+        .cart-btn:hover {
+            box-shadow: 0 0 17px #8B5FBF77, 0 3px 19px #8B5FBF44;
+            background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+            transform: scale(1.06);
+        }
+        
+        .cart-btn svg {
+            display: block;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--cosmetic-lavender);
+            color: #181710;
+            border-radius: 50%;
+            font-size: 0.7em;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            box-shadow: 0 1px 7px #fff2;
+        }
+
+        /* ===== COSMETIC HERO SECTION ===== */
+        .cosmetic-hero {
+            background: linear-gradient(135deg, rgba(21,21,22,0.9) 0%, rgba(34,34,36,0.8) 100%), url('rg.png') center center/cover no-repeat;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cosmetic-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--black) 100%);
+        }
+
+        .cosmetic-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cosmetic-hero h1 {
+            font-size: 3.5rem;
+            color: var(--cosmetic-purple);
+            margin-bottom: 20px;
+            text-shadow: 0 3px 22px #2D1A4D, 0 1px 10px #8B5FBF55;
+        }
+
+        .cosmetic-hero p {
+            font-size: 1.3rem;
+            color: var(--silver-metal);
+            margin-bottom: 30px;
+        }
+
+        .cosmetic-badge {
+            display: inline-block;
+            background: var(--cosmetic-purple);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== BREADCRUMBS ===== */
+        .breadcrumbs {
+            background: var(--black2);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(139, 95, 191, 0.3);
+        }
+
+        .breadcrumbs-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumbs a {
+            color: var(--silver-metal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--cosmetic-purple);
+        }
+
+        .breadcrumbs span[aria-current] {
+            color: var(--cosmetic-purple);
+            font-weight: 600;
+        }
+
+        /* ===== МОБИЛЬНЫЕ ФИЛЬТРЫ ===== */
+        .mobile-filters {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+            
+            header {
+                padding: 8px 0;
+                height: 60px;
+            }
+            
+            .mobile-filters {
+                display: block;
+                position: sticky;
+                top: 60px;
+                z-index: 998;
+                background: var(--black);
+                margin: 0;
+                padding: 0;
+            }
+            
+            .mobile-filter-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: var(--black2);
+                padding: 15px 20px;
+                border-bottom: 2px solid var(--cosmetic-purple);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin: 0;
+                border-top: none;
+                border-radius: 0;
+                user-select: none;
+            }
+            
+            .mobile-filter-header:active {
+                background: rgba(139, 95, 191, 0.15);
+                transform: translateY(1px);
+            }
+            
+            .mobile-filter-title {
+                color: var(--cosmetic-purple);
+                font-weight: 700;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .mobile-filter-toggle {
+                color: var(--silver-metal);
+                font-size: 1rem;
+                transition: transform 0.3s ease;
+                font-weight: bold;
+            }
+            
+            .mobile-filter-toggle.active {
+                transform: rotate(180deg);
+                color: var(--cosmetic-purple);
+            }
+            
+            .mobile-filters-container {
+                background: var(--black);
+                border-bottom: 1px solid var(--cosmetic-purple);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 100%;
+                z-index: 999;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            
+            .mobile-filters-container.active {
+                max-height: 80vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .mobile-filters-content {
+                padding: 20px;
+            }
+            
+            .mobile-filter-section {
+                margin-bottom: 25px;
+            }
+            
+            .mobile-filter-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            .mobile-filter-section-title {
+                color: var(--cosmetic-purple);
+                font-weight: 600;
+                margin-bottom: 12px;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .mobile-filter-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .mobile-filter-btn {
+                background: transparent;
+                border: 2px solid var(--silver-metal);
+                color: var(--silver-metal);
+                padding: 10px 15px;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: 600;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex: none;
+                min-width: auto;
+                text-align: center;
+                min-height: 44px;
+                width: auto;
+                max-width: 100%;
+            }
+            
+            .mobile-filter-btn.active {
+                border-color: var(--cosmetic-purple);
+                color: var(--cosmetic-purple);
+                background: rgba(139, 95, 191, 0.1);
+                transform: scale(1.05);
+            }
+            
+            .mobile-filter-btn:active {
+                transform: scale(0.95);
+            }
+            
+            .mobile-search-box {
+                position: relative;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .mobile-search-box input {
+                width: 100%;
+                padding: 12px 45px 12px 15px;
+                border: 2px solid var(--silver-metal);
+                border-radius: 25px;
+                background: var(--black2);
+                color: var(--silver-metal);
+                font-size: 1rem;
+                min-height: 44px;
+            }
+            
+            .mobile-search-box input:focus {
+                outline: none;
+                border-color: var(--cosmetic-purple);
+            }
+            
+            .mobile-search-btn {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                color: var(--silver-metal);
+                cursor: pointer;
+                font-size: 1.2rem;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            @media (max-width: 380px) {
+                .mobile-filter-buttons {
+                    gap: 6px;
+                }
+                
+                .mobile-filter-btn {
+                    padding: 8px 12px;
+                    font-size: 0.75rem;
+                    min-height: 40px;
+                }
+                
+                .mobile-filters-content {
+                    padding: 15px;
+                }
+            }
+            
+            .cosmetic-filters {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-filters {
+                display: none;
+            }
+            
+            .cosmetic-filters {
+                display: block;
+            }
+        }
+
+        /* ===== CATEGORIES NAV ===== */
+        .cosmetic-categories {
+            background: var(--black2);
+            padding: 30px 0;
+            border-bottom: 2px solid var(--cosmetic-purple);
+        }
+
+        .categories-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .categories-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 2px solid var(--silver-metal);
+            color: var(--silver-metal);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            border-color: var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+            background: rgba(139, 95, 191, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .cosmetic-categories {
+                position: static;
+                padding: 20px 0;
+            }
+            
+            .categories-container {
+                padding: 0 15px;
+            }
+            
+            .categories-nav {
+                flex-direction: row;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+                gap: 10px;
+                
+                scrollbar-width: thin;
+                scrollbar-color: var(--cosmetic-purple) var(--black2);
+            }
+            
+            .categories-nav::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .categories-nav::-webkit-scrollbar-track {
+                background: var(--black2);
+                border-radius: 3px;
+            }
+            
+            .categories-nav::-webkit-scrollbar-thumb {
+                background: var(--cosmetic-purple);
+                border-radius: 3px;
+            }
+            
+            .categories-nav::-webkit-scrollbar-thumb:hover {
+                background: var(--cosmetic-lavender);
+            }
+            
+            .category-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+        }
+
+        /* ===== FILTERS SECTION ===== */
+        .cosmetic-filters {
+            background: var(--black);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--cosmetic-purple);
+            position: sticky;
+            top: 70px;
+            z-index: 997;
+        }
+
+        .filters-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--silver-metal);
+            color: var(--silver-metal);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+            background: rgba(139, 95, 191, 0.1);
+        }
+
+        /* ===== SORTING ===== */
+        .sorting {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .sorting select {
+            background: var(--black2);
+            border: 2px solid var(--silver-metal);
+            color: var(--silver-metal);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            min-width: 160px;
+            max-width: 180px;
+        }
+
+        .sorting select:focus {
+            outline: none;
+            border-color: var(--cosmetic-purple);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 200px;
+            max-width: 250px;
+            flex-shrink: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 40px 8px 15px;
+            border: 2px solid var(--silver-metal);
+            border-radius: 20px;
+            background: var(--black2);
+            color: var(--silver-metal);
+            font-size: 0.9rem;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--cosmetic-purple);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--silver-metal);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Адаптация для средних экранов */
+        @media (max-width: 1200px) {
+            .filters-container {
+                gap: 12px;
+            }
+            
+            .filter-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .sorting select {
+                min-width: 140px;
+                max-width: 160px;
+            }
+            
+            .search-box {
+                min-width: 180px;
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .filters-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .filter-group {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            .search-box {
+                order: 2;
+                min-width: 250px;
+                max-width: 300px;
+                margin: 0 15px;
+            }
+            
+            .sorting {
+                order: 3;
+            }
+            
+            .sorting select {
+                min-width: 150px;
+            }
+        }
+
+        /* ===== PRODUCTS GRID ===== */
+        .cosmetic-products {
+            padding: 60px 0;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .products-header h2 {
+            font-size: 2.8rem;
+            color: var(--cosmetic-purple);
+            margin-bottom: 15px;
+        }
+
+        .products-header p {
+            color: var(--silver-metal);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .cosmetic-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222224 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid var(--silver-metal);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .cosmetic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .cosmetic-card.skincare::before { background: var(--cosmetic-purple); }
+        .cosmetic-card.hair::before { background: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene::before { background: var(--cosmetic-violet); }
+        .cosmetic-card.recovery::before { background: var(--cosmetic-pink); }
+        .cosmetic-card.protection::before { background: var(--cosmetic-mint); }
+
+        .cosmetic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 95, 191, 0.2);
+            border-color: var(--cosmetic-purple);
+        }
+
+        .cosmetic-card.skincare:hover { box-shadow: 0 20px 40px rgba(139, 95, 191, 0.2); border-color: var(--cosmetic-purple); }
+        .cosmetic-card.hair:hover { box-shadow: 0 20px 40px rgba(157, 122, 214, 0.2); border-color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene:hover { box-shadow: 0 20px 40px rgba(106, 76, 156, 0.2); border-color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery:hover { box-shadow: 0 20px 40px rgba(214, 122, 185, 0.2); border-color: var(--cosmetic-pink); }
+        .cosmetic-card.protection:hover { box-shadow: 0 20px 40px rgba(122, 214, 185, 0.2); border-color: var(--cosmetic-mint); }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .product-badge.skincare { background: var(--cosmetic-purple); }
+        .product-badge.hair { background: var(--cosmetic-lavender); }
+        .product-badge.hygiene { background: var(--cosmetic-violet); }
+        .product-badge.recovery { background: var(--cosmetic-pink); }
+        .product-badge.protection { background: var(--cosmetic-mint); }
+        .product-badge.new { background: var(--gold-metal); }
+        .product-badge.sale { background: var(--cosmetic-pink); }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--black2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cosmetic-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-category {
+            color: var(--silver-bright);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .cosmetic-card.skincare .product-title { color: var(--cosmetic-purple); }
+        .cosmetic-card.hair .product-title { color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene .product-title { color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery .product-title { color: var(--cosmetic-pink); }
+        .cosmetic-card.protection .product-title { color: var(--cosmetic-mint); }
+
+        .product-description {
+            color: var(--silver-metal);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            color: var(--silver-metal);
+            font-size: 0.9rem;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .cosmetic-card.skincare .product-features li::before { color: var(--cosmetic-purple); }
+        .cosmetic-card.hair .product-features li::before { color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene .product-features li::before { color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery .product-features li::before { color: var(--cosmetic-pink); }
+        .cosmetic-card.protection .product-features li::before { color: var(--cosmetic-mint); }
+
+        .product-details {
+            background: rgba(139, 95, 191, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--cosmetic-purple);
+        }
+
+        .cosmetic-card.skincare .product-details { background: rgba(139, 95, 191, 0.1); border-left-color: var(--cosmetic-purple); }
+        .cosmetic-card.hair .product-details { background: rgba(157, 122, 214, 0.1); border-left-color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene .product-details { background: rgba(106, 76, 156, 0.1); border-left-color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery .product-details { background: rgba(214, 122, 185, 0.1); border-left-color: var(--cosmetic-pink); }
+        .cosmetic-card.protection .product-details { background: rgba(122, 214, 185, 0.1); border-left-color: var(--cosmetic-mint); }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            color: var(--silver-metal);
+        }
+
+        .detail-value {
+            font-weight: 600;
+        }
+
+        .cosmetic-card.skincare .detail-value { color: var(--cosmetic-purple); }
+        .cosmetic-card.hair .detail-value { color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene .detail-value { color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery .detail-value { color: var(--cosmetic-pink); }
+        .cosmetic-card.protection .detail-value { color: var(--cosmetic-mint); }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 95, 191, 0.2);
+        }
+
+        .cosmetic-card.skincare .product-price { border-top-color: rgba(139, 95, 191, 0.2); }
+        .cosmetic-card.hair .product-price { border-top-color: rgba(157, 122, 214, 0.2); }
+        .cosmetic-card.hygiene .product-price { border-top-color: rgba(106, 76, 156, 0.2); }
+        .cosmetic-card.recovery .product-price { border-top-color: rgba(214, 122, 185, 0.2); }
+        .cosmetic-card.protection .product-price { border-top-color: rgba(122, 214, 185, 0.2); }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .cosmetic-card.skincare .price { color: var(--cosmetic-purple); }
+        .cosmetic-card.hair .price { color: var(--cosmetic-lavender); }
+        .cosmetic-card.hygiene .price { color: var(--cosmetic-violet); }
+        .cosmetic-card.recovery .price { color: var(--cosmetic-pink); }
+        .cosmetic-card.protection .price { color: var(--cosmetic-mint); }
+
+        .old-price {
+            font-size: 1rem;
+            color: var(--silver-bright);
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(90deg, #1a1a2a 0%, #2d2d3a 100%);
+            border: 2px solid var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(90deg, #2d2d3a 0%, #1a1a2a 100%);
+            color: #c9b3e6;
+            box-shadow: 0 0 20px rgba(139, 95, 191, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cosmetic-card.hair .add-to-cart { 
+            background: linear-gradient(90deg, #2a1a2a 0%, #3a2d3a 100%);
+            border-color: var(--cosmetic-lavender);
+            color: var(--cosmetic-lavender);
+        }
+        .cosmetic-card.hair .add-to-cart:hover { 
+            background: linear-gradient(90deg, #3a2d3a 0%, #2a1a2a 100%);
+            color: #d9c8f0;
+            box-shadow: 0 0 20px rgba(157, 122, 214, 0.5);
+        }
+
+        .cosmetic-card.hygiene .add-to-cart { 
+            background: linear-gradient(90deg, #1a1a2a 0%, #2d2d3a 100%);
+            border-color: var(--cosmetic-violet);
+            color: var(--cosmetic-violet);
+        }
+        .cosmetic-card.hygiene .add-to-cart:hover { 
+            background: linear-gradient(90deg, #2d2d3a 0%, #1a1a2a 100%);
+            color: #a695c7;
+            box-shadow: 0 0 20px rgba(106, 76, 156, 0.5);
+        }
+
+        /* ===== QUICK VIEW MODAL ===== */
+        .quick-view-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-view-modal.active {
+            display: flex;
+        }
+
+        .quick-view-content {
+            background: var(--black2);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid var(--cosmetic-purple);
+        }
+
+        .close-quick-view {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--silver-metal);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-quick-view:hover {
+            color: var(--cosmetic-pink);
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 10px 15px;
+            border: 2px solid var(--silver-metal);
+            border-radius: 8px;
+            color: var(--silver-metal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 44px;
+            text-align: center;
+        }
+
+        .pagination a:hover {
+            border-color: var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+        }
+
+        .pagination span[aria-current] {
+            border-color: var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+            background: rgba(139, 95, 191, 0.1);
+        }
+
+        /* ===== INFO SECTIONS ===== */
+        .cosmetic-info {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #151516 0%, #1a1a1d 100%);
+        }
+
+        .info-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            background: rgba(34, 34, 36, 0.6);
+            border: 2px solid rgba(139, 95, 191, 0.2);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--cosmetic-purple);
+            background: rgba(34, 34, 36, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(139, 95, 191, 0.15);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .info-card h3 {
+            color: var(--cosmetic-purple);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: var(--silver-metal);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== CONSULTATION SECTION ===== */
+        .consultation-section {
+            padding: 80px 0;
+            background: var(--black);
+        }
+
+        .consultation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .consultation-container h3 {
+            color: var(--cosmetic-purple);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .consultation-container p {
+            color: var(--silver-metal);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .consult-btn {
+            background: linear-gradient(90deg, #1a1a2a 0%, #2d2d3a 100%);
+            border: 2px solid var(--cosmetic-purple);
+            color: var(--cosmetic-purple);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            min-height: 44px;
+        }
+
+        .consult-btn:hover {
+            background: linear-gradient(90deg, #2d2d3a 0%, #1a1a2a 100%);
+            color: #c9b3e6;
+            box-shadow: 0 0 20px rgba(139, 95, 191, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black2);
+            color: var(--silver-metal);
+            text-align: center;
+            padding: 50px 7% 30px;
+            border-top: 5px solid var(--cosmetic-purple);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            color: var(--cosmetic-purple);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--silver-metal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--cosmetic-purple);
+        }
+
+        .footer-nav { 
+            margin-bottom: 20px;
+        }
+        
+        .footer-nav a {
+            color: var(--cosmetic-purple); 
+            text-decoration: none; 
+            margin: 0 13px; 
+            font-weight: 600;
+        }
+        
+        .footer-nav a:hover { 
+            text-decoration: underline; 
+            color: #c9b3e6;
+        }
+
+        /* ===== LOADING STATES ===== */
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--cosmetic-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .form-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(139, 95, 191, 0.1);
+            color: var(--cosmetic-purple);
+            border: 1px solid var(--cosmetic-purple);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(214, 122, 185, 0.1);
+            color: var(--cosmetic-pink);
+            border: 1px solid var(--cosmetic-pink);
+            display: block;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 10px;
+                height: 44px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .cosmetic-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cosmetic-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .quick-view-content {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cosmetic-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .products-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cosmetic-card {
+                padding: 20px;
+            }
+            
+            .category-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        .hamburger div {
+            width: 22px;
+            height: 2.5px;
+            background: var(--cosmetic-purple);
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav {
+                justify-content: space-between;
+            }
+            
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background: var(--black2);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+                border-top: 1px solid var(--cosmetic-purple);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                margin: 0;
+                padding: 12px 15px;
+                border-bottom: 1px solid rgba(139, 95, 191, 0.2);
+                font-size: 0.95rem;
+            }
+
+            .sub-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                margin-left: 20px;
+            }
+
+            .sub-menu a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                border-bottom: 1px solid rgba(139, 95, 191, 0.1);
+            }
+
+            .sub-menu::before {
+                display: none;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo"><a href="index.html">Клуб RING</a></div>
-                <ul class="menu">
-                    <li><a href="shop.html">Каталог</a></li>
-                    <li><a href="equipment.html">Снаряжение</a></li>
-                    <li><a href="cosmetic.html" class="active">Косметика</a></li>
-                    <li><a href="pharma.html">Питание</a></li>
-                    <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section class="category">
-            <div class="container">
-                <h1>Косметика для спортсменов</h1>
-                <p class="category-desc">Профессиональная косметика и эмульсии</p>
-                <div class="category-filters">
-                    <input type="text" id="search" placeholder="Поиск...">
-                    <select id="sort">
-                        <option value="name">По наименованию</option>
-                        <option value="price-asc">По цене (возрастающая)</option>
-                        <option value="price-desc">По цене (убывающая)</option>
-                    </select>
-                </div>
-                <div class="products-grid" id="products-cosmetic"></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+
+<a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+
+<header role="banner">
+    <div class="nav">
+        <a href="index.html" class="logo" itemscope itemtype="https://schema.org/SportsOrganization">
+            <span itemprop="name">RING</span> BOXING CLUB
+        </a>
+        <div class="hamburger" aria-label="Меню" role="button" aria-expanded="false">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/category.js"></script>
+        <nav class="menu" role="navigation" aria-label="Основное меню">
+            <a href="index.html">Главная</a>
+            <a href="index.html#about">О проекте</a>
+            
+            <div class="menu-item-has-children">
+                <a href="shop.html">Магазин</a>
+                <div class="sub-menu">
+                    <a href="equipment.html">🥊 Экипировка</a>
+                    <a href="cosmetic.html" aria-current="page">🧴 Косметика</a>
+                    <a href="pharma.html">💊 Аптека</a>
+                </div>
+            </div>
+            
+            <a href="https://rutube.ru/channel/23770571/" target="_blank">Видео</a>
+            <a href="https://dzen.ru/ring_boxin_club?share_to=link" target="_blank">Блог</a>
+            <a href="index.html#contacts">Контакты</a>
+        </nav>
+        <a href="cart.html" class="cart-btn" aria-label="Корзина">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 6h2l.4 2M7 13h9l1.5-6h-13L7 13zM7 17a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm8 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" 
+                      stroke="#8B5FBF" 
+                      stroke-width="1.7" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round"/>
+            </svg>
+            <span class="cart-count" style="display:none;">0</span>
+        </a>
+    </div>
+</header>
+
+<main id="main-content">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <div class="breadcrumbs-container">
+            <a href="index.html">Главная</a> > 
+            <a href="shop.html">Магазин</a> > 
+            <span aria-current="page">Спортивная косметика</span>
+        </div>
+    </nav>
+
+    <!-- МОБИЛЬНЫЕ ФИЛЬТРЫ -->
+    <div class="mobile-filters">
+        <div class="mobile-filter-header" id="mobileFilterToggle">
+            <div class="mobile-filter-title">
+                <span>🔍</span> Фильтр и поиск
+            </div>
+            <div class="mobile-filter-toggle">▼</div>
+        </div>
+        <div class="mobile-filters-container" id="mobileFiltersContainer">
+            <div class="mobile-filters-content">
+                <!-- Поиск -->
+                <div class="mobile-search-box">
+                    <input type="text" placeholder="Поиск косметики..." aria-label="Поиск спортивной косметики" id="mobileSearchInput">
+                    <button class="mobile-search-btn" aria-label="Найти">🔍</button>
+                </div>
+                
+                <!-- Категории -->
+                <div class="mobile-filter-section">
+                    <div class="mobile-filter-section-title">
+                        <span>🧴</span> Категории
+                    </div>
+                    <div class="mobile-filter-buttons">
+                        <button class="mobile-filter-btn active" data-category="all">Все</button>
+                        <button class="mobile-filter-btn" data-category="skincare">Уход за кожей</button>
+                        <button class="mobile-filter-btn" data-category="hair">Волосы</button>
+                        <button class="mobile-filter-btn" data-category="hygiene">Гигиена</button>
+                        <button class="mobile-filter-btn" data-category="recovery">Восстановление</button>
+                        <button class="mobile-filter-btn" data-category="protection">Защита</button>
+                    </div>
+                </div>
+                
+                <!-- Статус -->
+                <div class="mobile-filter-section">
+                    <div class="mobile-filter-section-title">
+                        <span>🏷️</span> Статус
+                    </div>
+                    <div class="mobile-filter-buttons">
+                        <button class="mobile-filter-btn active" data-filter="all">Все</button>
+                        <button class="mobile-filter-btn" data-filter="new">Новинки</button>
+                        <button class="mobile-filter-btn" data-filter="sale">Акции</button>
+                        <button class="mobile-filter-btn" data-filter="bestseller">Хиты</button>
+                    </div>
+                </div>
+                
+                <!-- Сортировка -->
+                <div class="mobile-filter-section">
+                    <div class="mobile-filter-section-title">
+                        <span>📊</span> Сортировка
+                    </div>
+                    <div style="width: 100%;">
+                        <select aria-label="Сортировка товаров" id="mobileSortSelect" style="width: 100%; padding: 10px; border: 2px solid var(--silver-metal); border-radius: 20px; background: var(--black2); color: var(--silver-metal);">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">По цене (↑)</option>
+                            <option value="price-desc">По цене (↓)</option>
+                            <option value="name">По названию</option>
+                            <option value="new">Сначала новинки</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="cosmetic-hero" role="banner" aria-labelledby="cosmetic-heading">
+        <div class="cosmetic-hero-content">
+            <div class="cosmetic-badge">Спортивная косметика</div>
+            <h1 id="cosmetic-heading">Уход для чемпионов RING BOXING CLUB</h1>
+            <p>Профессиональная косметика для ухода за кожей до и после тренировок</p>
+        </div>
+    </section>
+
+    <!-- CATEGORIES NAVIGATION -->
+    <section class="cosmetic-categories" aria-labelledby="categories-heading">
+        <div class="categories-container">
+            <h2 id="categories-heading" class="visually-hidden">Категории спортивной косметики</h2>
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">
+                    <span>🧴</span> Все товары
+                </button>
+                <button class="category-btn" data-category="skincare">
+                    <span>✨</span> Уход за кожей
+                </button>
+                <button class="category-btn" data-category="hair">
+                    <span>💇</span> Волосы
+                </button>
+                <button class="category-btn" data-category="hygiene">
+                    <span>🚿</span> Гигиена
+                </button>
+                <button class="category-btn" data-category="recovery">
+                    <span>🔄</span> Восстановление
+                </button>
+                <button class="category-btn" data-category="protection">
+                    <span>🛡️</span> Защита
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS SECTION -->
+    <section class="cosmetic-filters" aria-labelledby="filters-heading">
+        <div class="filters-container">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="new">Новинки</button>
+                <button class="filter-btn" data-filter="sale">Акции</button>
+                <button class="filter-btn" data-filter="bestseller">Хиты</button>
+            </div>
+            
+            <div class="sorting">
+                <select aria-label="Сортировка товаров" id="desktopSortSelect">
+                    <option value="default">По умолчанию</option>
+                    <option value="price-asc">По цене (возрастание)</option>
+                    <option value="price-desc">По цене (убывание)</option>
+                    <option value="name">По названию</option>
+                    <option value="new">Сначала новинки</option>
+                </select>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Поиск косметики..." aria-label="Поиск спортивной косметики" id="desktopSearchInput">
+                <button class="search-btn" aria-label="Найти">🔍</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section class="cosmetic-products" aria-labelledby="products-heading">
+        <div class="products-header">
+            <h2 id="products-heading">Спортивная косметика</h2>
+            <p>Профессиональные средства для ухода за телом спортсмена</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 - Skincare -->
+            <div class="cosmetic-card skincare" data-category="skincare" data-status="bestseller">
+                <div class="product-badge skincare">ХИТ</div>
+                <div class="product-image">
+                    <img src="" 
+                         alt="Очищающий гель для лица Active Clean" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>✨</span> Уход за кожей
+                </div>
+                <h3 class="product-title">Active Clean Гель для умывания</h3>
+                <p class="product-description">Глубоко очищает поры от пота и загрязнений после интенсивных тренировок</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Гель для умывания</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">200 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Тип кожи:</span>
+                        <span class="detail-value">Все типы</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Удаляет загрязнения и излишки кожного сала</li>
+                    <li>Не сушит кожу</li>
+                    <li>Освежает и тонизирует</li>
+                    <li>Без парабенов и SLS</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">1,200₽</span>
+                        <span class="old-price">1,500₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Active Clean Гель для умывания" data-price="1200">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 - Recovery -->
+            <div class="cosmetic-card recovery" data-category="recovery" data-status="new">
+                <div class="product-badge new">NEW</div>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23222224' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23D67AB9' font-size='48' font-family='Arial'%3E🔄%3C/text%3E%3C/svg%3E" 
+                         alt="Восстанавливающий крем для мышц Recovery Balm" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>🔄</span> Восстановление
+                </div>
+                <h3 class="product-title">Recovery Balm Крем для мышц</h3>
+                <p class="product-description">Интенсивное восстановление мышц после тренировок с охлаждающим эффектом</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Крем-бальзам</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">150 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Эффект:</span>
+                        <span class="detail-value">Охлаждающий</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Снимает мышечное напряжение</li>
+                    <li>Ускоряет восстановление</li>
+                    <li>Охлаждающий эффект ментола</li>
+                    <li>Нежирная текстура</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">1,800₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Recovery Balm Крем для мышц" data-price="1800">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 - Protection -->
+            <div class="cosmetic-card protection" data-category="protection" data-status="bestseller">
+                <div class="product-badge protection">BEST</div>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23222224' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%237AD6B9' font-size='48' font-family='Arial'%3E🛡️%3C/text%3E%3C/svg%3E" 
+                         alt="Защитный крем для рук Boxer's Guard" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>🛡️</span> Защита
+                </div>
+                <h3 class="product-title">Boxer's Guard Крем для рук</h3>
+                <p class="product-description">Защита и уход за кожей рук боксера, предотвращение мозолей и трещин</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Защитный крем</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">100 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Действие:</span>
+                        <span class="detail-value">Защитное</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Защищает от мозолей и трещин</li>
+                    <li>Укрепляет кожу рук</li>
+                    <li>Быстро впитывается</li>
+                    <li>Не мешает хвату</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">950₽</span>
+                        <span class="old-price">1,200₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Boxer's Guard Крем для рук" data-price="950">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4 - Hair -->
+            <div class="cosmetic-card hair" data-category="hair" data-status="sale">
+                <div class="product-badge sale">SALE -25%</div>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23222224' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%239D7AD6' font-size='48' font-family='Arial'%3E💇%3C/text%3E%3C/svg%3E" 
+                         alt="Шампунь для спортсменов Active Hair" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>💇</span> Волосы
+                </div>
+                <h3 class="product-title">Active Hair Шампунь</h3>
+                <p class="product-description">Интенсивное очищение волос и кожи головы от пота после тренировок</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Шампунь</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">300 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Тип волос:</span>
+                        <span class="detail-value">Все типы</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Глубоко очищает от пота</li>
+                    <li>Укрепляет волосы</li>
+                    <li>Освежает кожу головы</li>
+                    <li>Без сульфатов</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">1,350₽</span>
+                        <span class="old-price">1,800₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Active Hair Шампунь" data-price="1350">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 5 - Hygiene -->
+            <div class="cosmetic-card hygiene" data-category="hygiene" data-status="new">
+                <div class="product-badge new">NEW</div>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23222224' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236A4C9C' font-size='48' font-family='Arial'%3E🚿%3C/text%3E%3C/svg%3E" 
+                         alt="Антибактериальный гель для душа Sport Clean" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>🚿</span> Гигиена
+                </div>
+                <h3 class="product-title">Sport Clean Гель для душа</h3>
+                <p class="product-description">Антибактериальное очищение тела с защитой от неприятных запахов</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Гель для душа</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">400 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Эффект:</span>
+                        <span class="detail-value">Антибактериальный</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Уничтожает бактерии</li>
+                    <li>Защищает от запаха пота</li>
+                    <li>Не сушит кожу</li>
+                    <li>Освежающий аромат</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">1,100₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Sport Clean Гель для душа" data-price="1100">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 6 - Skincare -->
+            <div class="cosmetic-card skincare" data-category="skincare" data-status="bestseller">
+                <div class="product-badge skincare">ХИТ</div>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23222224' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%238B5FBF' font-size='48' font-family='Arial'%3E💧%3C/text%3E%3C/svg%3E" 
+                         alt="Увлажняющий лосьон для тела Sport Moisture" 
+                         class="lazy" 
+                         loading="lazy">
+                </div>
+                <div class="product-category">
+                    <span>✨</span> Уход за кожей
+                </div>
+                <h3 class="product-title">Sport Moisture Лосьон</h3>
+                <p class="product-description">Интенсивное увлажнение кожи после душа, восстановление гидролипидного барьера</p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тип:</span>
+                        <span class="detail-value">Лосьон для тела</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Объем:</span>
+                        <span class="detail-value">250 мл</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Текстура:</span>
+                        <span class="detail-value">Легкая</span>
+                    </div>
+                </div>
+
+                <ul class="product-features">
+                    <li>Глубоко увлажняет кожу</li>
+                    <li>Восстанавливает защитный барьер</li>
+                    <li>Быстро впитывается</li>
+                    <li>Не липкий эффект</li>
+                </ul>
+
+                <div class="product-price">
+                    <div>
+                        <span class="price">1,400₽</span>
+                    </div>
+                    <button class="add-to-cart" data-product="Sport Moisture Лосьон" data-price="1400">
+                        <span>🧴</span> В корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <nav class="pagination" role="navigation" aria-label="Навигация по страницам">
+            <span aria-current="page">1</span>
+            <a href="cosmetic-page2.html" aria-label="Страница 2">2</a>
+            <a href="cosmetic-page3.html" aria-label="Страница 3">3</a>
+        </nav>
+    </section>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <button class="close-quick-view" aria-label="Закрыть">×</button>
+            <div id="quickViewContent">
+                <!-- Контент быстрого просмотра будет загружен динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO SECTIONS -->
+    <section class="cosmetic-info" aria-labelledby="info-heading">
+        <h2 id="info-heading" class="visually-hidden">Информация о спортивной косметике</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">✨</div>
+                <h3>Профессиональный уход</h3>
+                <p>Специально разработанные формулы для интенсивных тренировок и быстрого восстановления</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🌿</div>
+                <h3>Натуральные компоненты</h3>
+                <p>Безопасный состав с натуральными экстрактами и минимальным содержанием химии</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">⚡</div>
+                <h3>Для активного образа жизни</h3>
+                <p>Оптимальные решения для спортсменов, учитывающие особенности тренировочного процесса</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSULTATION SECTION -->
+    <section class="consultation-section" aria-labelledby="consult-heading">
+        <div class="consultation-container">
+            <h3 id="consult-heading">Нужна консультация?</h3>
+            <p>Наши специалисты помогут подобрать оптимальные средства для вашего типа кожи и нагрузок</p>
+            <a href="tel:+79533584372" class="consult-btn">
+                <span>📞</span> Получить консультацию
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>Категории</h4>
+            <ul>
+                <li><a href="#skincare">Уход за кожей</a></li>
+                <li><a href="#hair">Волосы</a></li>
+                <li><a href="#hygiene">Гигиена</a></li>
+                <li><a href="#recovery">Восстановление</a></li>
+                <li><a href="#protection">Защита</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Помощь</h4>
+            <ul>
+                <li><a href="#">Как выбрать косметику</a></li>
+                <li><a href="#">Схемы применения</a></li>
+                <li><a href="#">Уход за кожей спортсмена</a></li>
+                <li><a href="#">Доставка и оплата</a></li>
+                <li><a href="#">Возврат товара</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <ul>
+                <li>г. Пенза, ул. Спортивная, 18</li>
+                <li><a href="tel:+79533584372">+7 (953) 358-43-72</a></li>
+                <li><a href="mailto:cosmetic@ringboxingclub.ru">cosmetic@ringboxingclub.ru</a></li>
+                <li>Ежедневно 10:00-20:00</li>
+                <li>Консультации: 11:00-19:00</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-nav">
+        <a href="index.html">Главная</a>
+        <a href="index.html#about">О проекте</a>
+        <a href="shop.html">Магазин</a>
+        <a href="https://rutube.ru/channel/23770571/" target="_blank">Видео</a>
+        <a href="https://dzen.ru/ring_boxin_club?share-to=link" target="_blank">Блог</a>
+        <a href="index.html#contacts">Контакты</a>
+    </div>
+    
+    <div itemscope itemtype="https://schema.org/SportsActivityLocation">
+        © 2025 RING BOXING CLUB — Спортивная косметика<br>
+        <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="addressLocality">г. Пенза</span>, <span itemprop="streetAddress">ул. Спортивная, 18</span>
+        </span><br>
+        Тел: <span itemprop="telephone">+7 (953) 358-43-72</span> | 
+        Email: <span itemprop="email">cosmetic@ringboxingclub.ru</span><br>
+        <span style="color: #8B5FBF; font-size: 14px;">Профессиональный уход для чемпионов</span>
+    </div>
+</footer>
+
+<script>
+// Косметическая корзина
+class CosmeticCart {
+    constructor() {
+        this.items = [];
+        this.debounceTimer = null;
+        this._cartCount = null;
+        this.filters = {
+            category: 'all',
+            status: 'all',
+            priceRange: 'all',
+            search: '',
+            sort: 'default'
+        };
+        this.init();
+    }
+    
+    init() {
+        this.loadFromStorage();
+        this.updateCartUI();
+        this.bindEvents();
+        this.setupFilters();
+        this.setupSorting();
+        this.setupMobileFilters();
+        this.setupImageLoading();
+        this.setupQuickView();
+        this.preloadCriticalImages();
+        this.trackUserBehavior();
+    }
+    
+    bindEvents() {
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => this.addToCart(e));
+        });
+    }
+    
+    addToCart(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const button = event.target.closest('.add-to-cart');
+        if (!button) return;
+        
+        const productCard = button.closest('.cosmetic-card');
+        const productName = button.dataset.product;
+        const productPrice = parseInt(button.dataset.price);
+        const productCategory = productCard.dataset.category;
+        
+        const product = {
+            id: Date.now(),
+            name: productName,
+            price: productPrice,
+            quantity: 1,
+            category: productCategory
+        };
+        
+        this.items.push(product);
+        this.saveToStorage();
+        this.updateCartUI();
+        this.showAddToCartAnimation(button);
+        this.trackEvent('cosmetic_add_to_cart', product);
+    }
+    
+    updateCartUI() {
+        const count = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCount = this.getCartElements();
+        
+        if (count > 0) {
+            cartCount.textContent = count;
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
+    }
+    
+    getCartElements() {
+        if (!this._cartCount) {
+            this._cartCount = document.querySelector('.cart-count');
+        }
+        return this._cartCount;
+    }
+    
+    showAddToCartAnimation(button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<span>✅</span> Добавлено!';
+        button.disabled = true;
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }, 2000);
+    }
+    
+    saveToStorage() {
+        clearTimeout(this.debounceTimer);
+        this.debounceTimer = setTimeout(() => {
+            localStorage.setItem('ringCosmeticCart', JSON.stringify(this.items));
+        }, 500);
+    }
+    
+    loadFromStorage() {
+        try {
+            const saved = localStorage.getItem('ringCosmeticCart');
+            this.items = saved ? JSON.parse(saved) : [];
+        } catch (e) {
+            console.error('Ошибка загрузки корзины:', e);
+            this.items = [];
+        }
+    }
+    
+    setupFilters() {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const searchInput = document.getElementById('desktopSearchInput');
+        
+        // Фильтрация по категориям
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.filters.category = btn.dataset.category;
+                this.updateFilteredProducts();
+            });
+        });
+        
+        // Фильтрация по статусу
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.filters.status = btn.dataset.filter;
+                this.updateFilteredProducts();
+            });
+        });
+        
+        // Поиск товаров с debounce
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    this.filters.search = e.target.value.toLowerCase();
+                    this.updateFilteredProducts();
+                }, 300);
+            });
+        }
+    }
+    
+    setupSorting() {
+        const sortSelect = document.getElementById('desktopSortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                this.filters.sort = e.target.value;
+                this.updateFilteredProducts();
+            });
+        }
+    }
+    
+    setupMobileFilters() {
+        const toggle = document.getElementById('mobileFilterToggle');
+        const container = document.getElementById('mobileFiltersContainer');
+        const toggleIcon = toggle?.querySelector('.mobile-filter-toggle');
+        
+        if (toggle && container && toggleIcon) {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // Предотвращаем всплытие
+                
+                const isOpening = !container.classList.contains('active');
+                
+                // Закрываем другие открытые фильтры если есть
+                document.querySelectorAll('.mobile-filters-container.active').forEach(openContainer => {
+                    if (openContainer !== container) {
+                        openContainer.classList.remove('active');
+                        const openToggle = openContainer.previousElementSibling?.querySelector('.mobile-filter-toggle');
+                        if (openToggle) openToggle.classList.remove('active');
+                    }
+                });
+                
+                // Переключаем текущий контейнер
+                container.classList.toggle('active');
+                toggleIcon.classList.toggle('active');
+                
+                // Прокручиваем к открытым фильтрам для удобства
+                if (isOpening) {
+                    setTimeout(() => {
+                        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            });
+        }
+        
+        // Обработчики для мобильных кнопок категорий
+        document.querySelectorAll('.mobile-filter-btn[data-category]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mobile-filter-btn[data-category]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.filters.category = btn.dataset.category;
+                this.updateFilteredProducts();
+                
+                // Закрываем фильтры после выбора категории
+                if (container) {
+                    container.classList.remove('active');
+                    if (toggleIcon) toggleIcon.classList.remove('active');
+                }
+            });
+        });
+        
+        // Обработчики для мобильных кнопок фильтров
+        document.querySelectorAll('.mobile-filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mobile-filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.filters.status = btn.dataset.filter;
+                this.updateFilteredProducts();
+            });
+        });
+        
+        // Мобильный поиск
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        let mobileSearchTimeout;
+        
+        if (mobileSearchInput) {
+            mobileSearchInput.addEventListener('input', (e) => {
+                clearTimeout(mobileSearchTimeout);
+                mobileSearchTimeout = setTimeout(() => {
+                    this.filters.search = e.target.value.toLowerCase();
+                    this.updateFilteredProducts();
+                }, 300);
+            });
+        }
+        
+        // Мобильная сортировка
+        const mobileSortSelect = document.getElementById('mobileSortSelect');
+        if (mobileSortSelect) {
+            mobileSortSelect.addEventListener('change', (e) => {
+                this.filters.sort = e.target.value;
+                this.updateFilteredProducts();
+            });
+        }
+        
+        // Закрытие фильтров при клике вне области
+        document.addEventListener('click', (e) => {
+            if (container && container.classList.contains('active') && 
+                !container.contains(e.target) && 
+                toggle && !toggle.contains(e.target)) {
+                container.classList.remove('active');
+                if (toggleIcon) toggleIcon.classList.remove('active');
+            }
+        });
+        
+        // Закрытие фильтров при скролле (опционально)
+        window.addEventListener('scroll', () => {
+            if (container && container.classList.contains('active')) {
+                container.classList.remove('active');
+                if (toggleIcon) toggleIcon.classList.remove('active');
+            }
+        });
+    }
+    
+    updateFilteredProducts() {
+        const products = Array.from(document.querySelectorAll('.cosmetic-card'));
+        
+        // Фильтрация
+        const filteredProducts = products.filter(product => {
+            const matchesCategory = this.filters.category === 'all' || product.dataset.category === this.filters.category;
+            const matchesStatus = this.filters.status === 'all' || product.dataset.status === this.filters.status;
+            const matchesSearch = this.matchesSearch(product, this.filters.search);
+            
+            return matchesCategory && matchesStatus && matchesSearch;
+        });
+        
+        // Сортировка
+        this.sortProducts(filteredProducts);
+        
+        // Показ/скрытие
+        products.forEach(product => {
+            product.style.display = 'none';
+        });
+        
+        filteredProducts.forEach(product => {
+            product.style.display = 'block';
+        });
+    }
+    
+    matchesSearch(product, searchTerm) {
+        if (!searchTerm) return true;
+        
+        const title = product.querySelector('.product-title')?.textContent.toLowerCase() || '';
+        const description = product.querySelector('.product-description')?.textContent.toLowerCase() || '';
+        const category = product.querySelector('.product-category')?.textContent.toLowerCase() || '';
+        
+        return title.includes(searchTerm) || 
+               description.includes(searchTerm) || 
+               category.includes(searchTerm);
+    }
+    
+    sortProducts(products) {
+        switch (this.filters.sort) {
+            case 'price-asc':
+                products.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.price')?.textContent.replace(/[^\d]/g, '') || '0');
+                    const priceB = parseInt(b.querySelector('.price')?.textContent.replace(/[^\d]/g, '') || '0');
+                    return priceA - priceB;
+                });
+                break;
+            case 'price-desc':
+                products.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.price')?.textContent.replace(/[^\d]/g, '') || '0');
+                    const priceB = parseInt(b.querySelector('.price')?.textContent.replace(/[^\d]/g, '') || '0');
+                    return priceB - priceA;
+                });
+                break;
+            case 'name':
+                products.sort((a, b) => {
+                    const nameA = a.querySelector('.product-title')?.textContent.toLowerCase() || '';
+                    const nameB = b.querySelector('.product-title')?.textContent.toLowerCase() || '';
+                    return nameA.localeCompare(nameB);
+                });
+                break;
+            case 'new':
+                products.sort((a, b) => {
+                    const isNewA = a.dataset.status === 'new';
+                    const isNewB = b.dataset.status === 'new';
+                    return (isNewB ? 1 : 0) - (isNewA ? 1 : 0);
+                });
+                break;
+        }
+        
+        // Обновление порядка в DOM
+        const productsGrid = document.querySelector('.products-grid');
+        if (productsGrid) {
+            products.forEach(product => {
+                productsGrid.appendChild(product);
+            });
+        }
+    }
+    
+    setupQuickView() {
+        const modal = document.getElementById('quickViewModal');
+        const closeBtn = modal?.querySelector('.close-quick-view');
+        
+        if (!modal || !closeBtn) return;
+        
+        // Закрытие модального окна
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        
+        // Закрытие по клику вне окна
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+        
+        // Закрытие по ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+        
+        // Открытие быстрого просмотра по клику на карточку
+        document.querySelectorAll('.cosmetic-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.add-to-cart')) {
+                    this.showQuickView(card);
+                }
+            });
+        });
+    }
+    
+    showQuickView(card) {
+        const modal = document.getElementById('quickViewModal');
+        const content = document.getElementById('quickViewContent');
+        
+        if (!modal || !content) return;
+        
+        // Заполнение контента быстрого просмотра
+        const title = card.querySelector('.product-title')?.textContent || '';
+        const description = card.querySelector('.product-description')?.textContent || '';
+        const category = card.querySelector('.product-category')?.innerHTML || '';
+        const details = card.querySelector('.product-details')?.innerHTML || '';
+        const features = card.querySelector('.product-features')?.innerHTML || '';
+        const price = card.querySelector('.product-price')?.innerHTML || '';
+        
+        let color = 'var(--cosmetic-purple)';
+        if (card.classList.contains('hair')) color = 'var(--cosmetic-lavender)';
+        else if (card.classList.contains('hygiene')) color = 'var(--cosmetic-violet)';
+        else if (card.classList.contains('recovery')) color = 'var(--cosmetic-pink)';
+        else if (card.classList.contains('protection')) color = 'var(--cosmetic-mint)';
+        
+        content.innerHTML = `
+            <div class="quick-view-product">
+                <div class="product-image" style="margin-bottom: 20px;">
+                    ${card.querySelector('.product-image')?.innerHTML || ''}
+                </div>
+                <div class="product-category">
+                    ${category}
+                </div>
+                <h3 class="product-title" style="color: ${color}">
+                    ${title}
+                </h3>
+                <p class="product-description">
+                    ${description}
+                </p>
+                <div class="product-details">
+                    ${details}
+                </div>
+                <ul class="product-features">
+                    ${features}
+                </ul>
+                <div class="product-price">
+                    ${price}
+                </div>
+            </div>
+        `;
+        
+        modal.classList.add('active');
+        this.trackEvent('quick_view', { product: title });
+    }
+    
+    setupImageLoading() {
+        const lazyImages = document.querySelectorAll('.lazy');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('lazy-loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+            // Fallback для браузеров без поддержки IntersectionObserver
+            lazyImages.forEach(img => {
+                img.classList.add('lazy-loaded');
+            });
+        }
+        
+        // Обработка ошибок загрузки изображений
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', () => {
+                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyMjI0Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSIjOEI1RkJGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPs6Vzr3Ovc63z4IgzrHOr86xzq/OvTwvdGV4dD48L3N2Zz4=';
+                img.alt = 'Изображение товара временно недоступно';
+            });
+        });
+    }
+    
+    preloadCriticalImages() {
+        // Preload hero background
+        const heroBg = new Image();
+        heroBg.src = 'cosmetic-bg.jpg';
+    }
+    
+    trackUserBehavior() {
+        // Отслеживание просмотров категорий
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.trackEvent('category_view', {
+                            category: entry.target.dataset.category
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('.cosmetic-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+        
+        // Отслеживание взаимодействий с фильтрами
+        document.querySelectorAll('.category-btn, .filter-btn, .sorting select').forEach(element => {
+            element.addEventListener('change', () => {
+                this.trackEvent('filter_used', this.filters);
+            });
+        });
+    }
+    
+    trackEvent(event, data) {
+        // Реализация отслеживания событий
+        console.log('Cosmetic Event:', event, data);
+    }
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    const cosmeticCart = new CosmeticCart();
+    
+    // Навигационное меню для мобильных устройств
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', menu.classList.contains('active'));
+        });
+    }
+    
+    // Закрытие меню при клике на ссылку
+    const menuLinks = document.querySelectorAll('.menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (menu) menu.classList.remove('active');
+            if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // Плавная прокрутка для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// Глобальный обработчик ошибок
+window.addEventListener('error', (e) => {
+    console.error('Cosmetic Error:', e.error);
+});
+
+// Service Worker для PWA (если нужно)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('SW registered: ', registration);
+        }).catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+        });
+    });
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "RING BOXING CLUB Cosmetic",
+  "description": "Магазин спортивной косметики для профессиональных спортсменов",
+  "url": "https://ringboxingclub.ru/cosmetic",
+  "image": "https://ringboxingclub.ru/cosmetic-bg.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Спортивная, 18",
+    "addressLocality": "Пенза",
+    "addressCountry": "RU"
+  },
+  "telephone": "+7 (953) 358-43-72",
+  "email": "cosmetic@ringboxingclub.ru",
+  "openingHours": "Mo-Su 10:00-20:00",
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Спортивная косметика",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Active Clean Гель для умывания",
+          "description": "Очищающий гель для кожи после тренировок"
+        },
+        "price": "1200",
+        "priceCurrency": "RUB"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Recovery Balm Крем для мышц",
+          "description": "Восстанавливающий крем с охлаждающим эффектом"
+        },
+        "price": "1800",
+        "priceCurrency": "RUB"
+      }
+    ]
+  }
+}
+</script>
+
 </body>
 </html>
