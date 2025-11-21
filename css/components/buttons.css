@@ -1,0 +1,224 @@
+/* ============================================
+   BUTTONS COMPONENT
+   ============================================ */
+
+/* ===== BASE BUTTON STYLES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  padding: 1.05em 2.25em;
+  font-size: 1.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background var(--transition-fast), 
+              color var(--transition-fast), 
+              box-shadow 0.19s, 
+              transform 0.13s;
+  text-decoration: none;
+  text-align: center;
+  min-width: 210px;
+  min-height: 44px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===== GOLD BUTTON ===== */
+.btn-gold {
+  background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+  color: var(--gold-metal);
+  box-shadow: 0 8px 27px rgba(200, 178, 115, 0.2);
+  border: 2px solid var(--gold-metal);
+}
+
+.btn-gold:hover:not(:disabled) {
+  background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+  color: #E8CE86;
+  box-shadow: 0 0 44px rgba(200, 178, 115, 0.53), 0 8px 52px rgba(200, 178, 115, 0.27);
+  transform: scale(1.07);
+}
+
+/* ===== SILVER BUTTON ===== */
+.btn-silver {
+  background: linear-gradient(90deg, #232427 0%, #373b40 100%);
+  color: var(--silver-metal);
+  box-shadow: 0 8px 25px rgba(191, 199, 199, 0.2);
+  border: 2px solid var(--silver-metal);
+}
+
+.btn-silver:hover:not(:disabled) {
+  background: linear-gradient(90deg, #373b40 0%, #232427 100%);
+  color: #ECECEC;
+  box-shadow: 0 0 44px rgba(191, 199, 199, 0.73), 0 8px 52px rgba(191, 199, 199, 0.27);
+  transform: scale(1.07);
+}
+
+/* ===== ADD TO CART BUTTON ===== */
+.add-to-cart {
+  background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+  border: 2px solid var(--gold-metal);
+  color: var(--gold-metal);
+  padding: 12px 25px;
+  border-radius: var(--border-radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  min-height: 44px;
+}
+
+.add-to-cart:hover:not(:disabled) {
+  background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+  color: #E8CE86;
+  box-shadow: 0 0 20px rgba(200, 178, 115, 0.5);
+  transform: scale(1.05);
+}
+
+/* ===== CATEGORY BUTTON ===== */
+.category-btn,
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--silver-metal);
+  color: var(--silver-metal);
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.category-btn:hover,
+.category-btn.active,
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: var(--gold-metal);
+  color: var(--gold-metal);
+  background: rgba(200, 178, 115, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===== REMOVE BUTTON ===== */
+.remove-btn {
+  background: transparent;
+  border: 1px solid var(--error-red);
+  color: var(--error-red);
+  padding: 8px var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--transition-base);
+}
+
+.remove-btn:hover:not(:disabled) {
+  background: rgba(244, 67, 54, 0.1);
+  transform: scale(1.05);
+}
+
+/* ===== QUANTITY CONTROLS ===== */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: rgba(200, 178, 115, 0.1);
+  border-radius: var(--border-radius-md);
+  padding: 5px;
+}
+
+.quantity-btn {
+  background: transparent;
+  border: 1px solid var(--gold-metal);
+  color: var(--gold-metal);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all var(--transition-fast);
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background: rgba(200, 178, 115, 0.2);
+  transform: scale(1.1);
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: var(--silver-metal);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .btn-gold,
+  .btn-silver {
+    display: block;
+    margin: 6px auto;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .category-btn,
+  .filter-btn {
+    padding: 10px var(--spacing-md);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+  }
+
+  .quantity-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .quantity-input {
+    width: 40px;
+  }
+
+  .remove-btn {
+    padding: 6px 12px;
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.9em 1.8em;
+    font-size: 1em;
+    min-width: 180px;
+  }
+}
