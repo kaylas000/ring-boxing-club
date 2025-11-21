@@ -1,0 +1,213 @@
+/* ============================================
+   FORMS COMPONENT
+   ============================================ */
+
+/* ===== BASE INPUT STYLES ===== */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px var(--spacing-md);
+  border: 2px solid var(--silver-metal);
+  border-radius: var(--border-radius-md);
+  background: var(--black2);
+  color: var(--silver-metal);
+  font-size: var(--font-size-md);
+  transition: all var(--transition-base);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--gold-metal);
+  box-shadow: 0 0 0 3px rgba(200, 178, 115, 0.1);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder {
+  color: var(--silver-bright);
+  opacity: 0.6;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box {
+  position: relative;
+  min-width: 200px;
+  max-width: 250px;
+  flex-shrink: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 40px 8px var(--spacing-md);
+  border: 2px solid var(--silver-metal);
+  border-radius: var(--border-radius-2xl);
+  background: var(--black2);
+  color: var(--silver-metal);
+  font-size: var(--font-size-sm);
+}
+
+.search-btn {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--silver-metal);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-base);
+}
+
+.search-btn:hover {
+  color: var(--gold-metal);
+}
+
+/* ===== PROMO CODE ===== */
+.promo-code {
+  margin: 25px 0;
+}
+
+.promo-title {
+  color: var(--gold-metal);
+  font-size: var(--font-size-lg);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.promo-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.promo-input {
+  flex: 1;
+  padding: 12px var(--spacing-md);
+  border: 2px solid var(--silver-metal);
+  border-radius: var(--border-radius-md);
+  background: var(--black);
+  color: var(--silver-metal);
+  font-size: var(--font-size-md);
+}
+
+.promo-btn {
+  background: linear-gradient(90deg, #23221a 0%, #373125 100%);
+  border: 2px solid var(--gold-metal);
+  color: var(--gold-metal);
+  padding: 12px var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all var(--transition-base);
+}
+
+.promo-btn:hover {
+  background: linear-gradient(90deg, #373125 0%, #23221a 100%);
+  box-shadow: 0 0 15px rgba(200, 178, 115, 0.3);
+}
+
+.promo-message {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  display: none;
+}
+
+.promo-message.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--success-green);
+  border: 1px solid var(--success-green);
+  display: block;
+}
+
+.promo-message.error {
+  background: rgba(244, 67, 54, 0.1);
+  color: var(--error-red);
+  border: 1px solid var(--error-red);
+  display: block;
+}
+
+/* ===== SELECT DROPDOWN ===== */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23BFC7C7' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  padding-right: var(--spacing-2xl);
+  cursor: pointer;
+}
+
+/* ===== FORM VALIDATION ===== */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--error-red);
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: var(--success-green);
+}
+
+/* ===== CHECKBOX & RADIO ===== */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--gold-metal);
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+  display: block;
+  color: var(--gold-metal);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-base);
+}
+
+.form-error {
+  color: var(--error-red);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-xs);
+  display: none;
+}
+
+.form-group.error .form-error {
+  display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .promo-form {
+    flex-direction: column;
+  }
+
+  .search-box {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
