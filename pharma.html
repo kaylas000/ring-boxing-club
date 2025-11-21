@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Питание - Ring Boxing Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo"><a href="index.html">Клуб RING</a></div>
+                <ul class="menu">
+                    <li><a href="shop.html">Каталог</a></li>
+                    <li><a href="equipment.html">Снаряжение</a></li>
+                    <li><a href="cosmetic.html">Косметика</a></li>
+                    <li><a href="pharma.html" class="active">Питание</a></li>
+                    <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="category">
+            <div class="container">
+                <h1>Спортивное питание</h1>
+                <p class="category-desc">Протеины, витамины, баос</p>
+                <div class="category-filters">
+                    <input type="text" id="search" placeholder="Поиск...">
+                </div>
+                <div class="products-grid" id="products-pharma"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ring Boxing Club. Все права защищены.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html>
